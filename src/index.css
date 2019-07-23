@@ -26,9 +26,34 @@ body {
 
 h1 {
   font-family: 'Roboto Slab', serif;
+  font-style: normal;
   font-weight: bold;
-  font-size: 130px;
+  font-size: 110px;
+  line-height: 0;
 }
+
+h2 {
+  font-family: 'Roboto Slab', serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 0;
+  color: var(--accentColor);
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 1;
+}
+
+h4 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+}
+
 #app {
   position: relative;
   overflow: scroll;
@@ -41,10 +66,27 @@ h1 {
   top: 500;
 }
 
+/* credit: https://www.webfx.com/blog/web-design/disable-text-selection/ */
+.disable-selection, .introGroup {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+.introGroup {
+  margin: 75px 0 0 10vw;
+}
+
+.inverted {
+  color: var(--lightColor);
+}
+
 .pane {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  max-height: 800px;
 }

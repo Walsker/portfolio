@@ -22,8 +22,6 @@
 		"react"
 	],
 	"rules": {
-    "no-console":"warn",
-    "no-unused-vars":"warn",
 		"indent": [
 			"error",
 			2
@@ -31,17 +29,21 @@
 		"linebreak-style": [
 			"error",
 			"unix"
-		],
+    ],
+    "no-console":"warn",
+    "no-unused-vars":"warn",
 		"quotes": [
 			"error",
 			"single"
-		],
+    ],
+    "react/prop-types": "off",
 		"semi": [
 			"error",
 			"always"
-		]
+    ]
 	},
 	"settings": {
+    
     "react": {
       "createClass": "createReactClass", // Regex for Component Factory to use,
                                          // default to "createReactClass"
