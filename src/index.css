@@ -83,20 +83,3 @@ h4 {
 .inverted {
   color: var(--lightColor);
 }
-
-.pane {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  max-height: 800px;
-}
-
-.carouselContainer {
-  height: 120px;
-}
-
-.carouselPane {
-  display: inline-block;
-  position: absolute;
-}

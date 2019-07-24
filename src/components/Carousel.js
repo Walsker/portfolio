@@ -1,5 +1,6 @@
 import React from 'react';
 import {useTransition, animated} from 'react-spring';
+import style from './carousel.module.css';
 
 const Carousel = ({children, index}) => {
   const transitions = useTransition(index % children.length, null, {
@@ -9,11 +10,12 @@ const Carousel = ({children, index}) => {
   });
 
   return (
-    <div className='carouselContainer'>
+    <div className={style.container}>
       {transitions.map(({item, props, key}) => (
         <animated.div 
           key={key}
           style={props}
+          className={style.window}
         >
           {children[item]} 
         </animated.div>

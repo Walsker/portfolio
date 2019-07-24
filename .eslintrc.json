@@ -37,6 +37,7 @@
 			"single"
     ],
     "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
 		"semi": [
 			"error",
 			"always"

@@ -1,0 +1,8 @@
+.container {
+  height: 120px;
+}
+
+.window {
+  display: inline-block;
+  position: absolute;
+}

@@ -1,4 +1,4 @@
-import Carousel from './Carousel';
-import Pane from './Pane';
+import Carousel from './carousel';
+import Pane from './pane';
 
 export {Carousel, Pane};

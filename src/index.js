@@ -23,10 +23,9 @@ const Landing = () => {
         <h3 className='inverted'>and I create</h3>
         <Carousel
           index={carouselIndex}
-          delay={1000}
         >
-          <h2 className='carouselPane'>websites</h2>
-          <h2 className='carouselPane'>mobile apps</h2>
+          <h2>websites</h2>
+          <h2>mobile apps</h2>
         </Carousel>
       </div>
       <div className='introGroup'>
@@ -61,18 +60,30 @@ const Landing = () => {
   return (
     <Pane inViewRef={paneRef}>
       <animated.svg width='100%' height='200px' style={{position: 'absolute', top: '308px'}}>
-        <animated.rect x='0' y='0' height='100%' width={stripe.length} fill={PRIMARY_COLOUR}></animated.rect>
+        <animated.rect x='0' y='0' width={stripe.length} height='100%' fill={PRIMARY_COLOUR}></animated.rect>
       </animated.svg>
-      {contentTrail.map((animStyle, index) => {
-        return (
-          <animated.div
-            key={index}
-            style={animStyle}
-          >
-            {content.props.children[index]}
-          </animated.div>
-        );
-      })}
+      {/* <div>
+        <> */}
+          {contentTrail.map((animStyle, index) => {
+            return (
+              <animated.div
+                key={index}
+                style={animStyle}
+              >
+                {content.props.children[index]}
+              </animated.div>
+            );
+          })}
+        {/* </>
+        <Carousel index={carouselIndex}>
+          <svg width='80%' height='80%'>
+            <rect x='0' y='0' width='100%' height='100%'></rect> 
+          </svg>
+          <svg width='40%' height='80%'>
+            <rect x='0' y='0' width='100%' height='100%'></rect> 
+          </svg>
+        </Carousel>
+      </div> */}
     </Pane>
   );
 };
