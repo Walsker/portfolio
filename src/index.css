@@ -55,7 +55,7 @@ h4 {
   font-size: 28px;
 }
 
-#app {
+#root {
   position: relative;
   overflow: scroll;
   width: 100%;

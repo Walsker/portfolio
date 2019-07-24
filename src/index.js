@@ -1,39 +1,12 @@
 import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
-import {useChain, useSpring, useTrail, useTransition, animated} from 'react-spring';
+import {useChain, useSpring, useTrail, animated} from 'react-spring';
+import {Carousel, Pane} from './components';
 import {useInterval} from './hooks';
 import './index.css';
 
 const PRIMARY_COLOUR = '#E23849';
-
-// Basic pane component. Each pane is the size of the browser window
-const Pane = ({children, inViewRef}) => (
-  <div ref={inViewRef} className='pane'>
-    {children}
-  </div>
-);
-
-const CarouselView = ({children, index}) => {
-  const transitions = useTransition(index % children.length, null, {
-    from: {opacity: 0, transform: 'translate(-100px, 0)'},
-    enter: {opacity: 1, transform: 'translate(0, 0)'},
-    leave: {opacity: 0, transform: 'translate(100px, 0)'}
-  });
-
-  return (
-    <div className='carouselContainer'>
-      {transitions.map(({item, props, key}) => (
-        <animated.div 
-          key={key}
-          style={props}
-        >
-          {children[item]} 
-        </animated.div>
-      ))}
-    </div>
-  );
-};
 
 const Landing = () => {
   // State for moving the carousel
@@ -48,13 +21,13 @@ const Landing = () => {
       </div>
       <div className='introGroup'>
         <h3 className='inverted'>and I create</h3>
-        <CarouselView
+        <Carousel
           index={carouselIndex}
           delay={1000}
         >
           <h2 className='carouselPane'>websites</h2>
           <h2 className='carouselPane'>mobile apps</h2>
-        </CarouselView>
+        </Carousel>
       </div>
       <div className='introGroup'>
         <h4>Let me make one for you.</h4>
@@ -82,6 +55,7 @@ const Landing = () => {
     transform: inView ? 'translate(0,0)' : 'translate(0,50px)',
   });
 
+  // NOTE: for some reason the chain doesn't work without the tertiary operator
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [.5, 1]);
 
   return (
@@ -142,10 +116,10 @@ const About = () => {
 
 const App = () => {
   return (
-    <div id='app'>
+    <>
       <Landing/>
       <About/>
-    </div>
+    </>
   );
 };
 
