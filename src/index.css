@@ -46,6 +46,7 @@ h3 {
   font-weight: 300;
   font-size: 38px;
   line-height: 1;
+  margin-bottom: 0;
 }
 
 h4 {
@@ -89,4 +90,13 @@ h4 {
   width: 100vw;
   height: 100vh;
   max-height: 800px;
+}
+
+.carouselContainer {
+  height: 120px;
+}
+
+.carouselPane {
+  display: inline-block;
+  position: absolute;
 }

@@ -1,7 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
-import {useChain, useSpring, useTrail, useTransition, animated} from 'react-spring';
 import {useInView} from 'react-intersection-observer';
+import {useChain, useSpring, useTrail, useTransition, animated} from 'react-spring';
+import {useInterval} from './hooks';
 import './index.css';
 
 const PRIMARY_COLOUR = '#E23849';
@@ -13,49 +14,31 @@ const Pane = ({children, inViewRef}) => (
   </div>
 );
 
-// const CarouselView = ({children, inViewRef}) => {
-//   const [index, select] = useState(children.map(0));
-
-//   const entryRef = useRef();
-//   const entryAnim = useSpring({
-//     ref: entryRef,
-//     delay: 5000,
-//     from: {opacity: 0, transform: 'translate(-50px, 0)'},
-//     to: {opacity: 1, transform: 'translate(0, 0)'}
-//   });
-
-//   const exitRef = useRef();
-//   const exitAnim = useSpring({
-//     ref: entryRef,
-//     delay: 5000,
-//     from: {opacity: 1, transform: 'translate(0, 0)'},
-//     to: {opacity: 0, transform: 'translate(50px, 0)'},
-//     onRest: () => select(selected == children.length-1 ? 0 : selected+1)
-//   });
-
-//   const transitions = useTransition(children, null, {
-//     from: {opacity: 0, transform: 'translate(-50px, 0)'},
-//     enter: {opacity: 1, transform: 'translate(0, 0)'},
-//     leave: {opacity: 0, transform: 'translate(50px, 0)'}
-//   });
-
-//   return transitions.map(({item, props, key}) => (
-//     <animated.div key={key} style={props}>
-//       {item}
-//     </animated.div>
-//   ));
-// };
-
-const Landing = () => {
-
-  // State for the toggle between 'websites' and 'mobile apps'
-  const [isMobile, toggleDemo] = useState((false));
-  const [highlightText, toggleText] = useState('websites');
-
-  const demo = useSpring({
-    from: {text: '',}
+const CarouselView = ({children, index}) => {
+  const transitions = useTransition(index % children.length, null, {
+    from: {opacity: 0, transform: 'translate(-100px, 0)'},
+    enter: {opacity: 1, transform: 'translate(0, 0)'},
+    leave: {opacity: 0, transform: 'translate(100px, 0)'}
   });
 
+  return (
+    <div className='carouselContainer'>
+      {transitions.map(({item, props, key}) => (
+        <animated.div 
+          key={key}
+          style={props}
+        >
+          {children[item]} 
+        </animated.div>
+      ))}
+    </div>
+  );
+};
+
+const Landing = () => {
+  // State for moving the carousel
+  const [carouselIndex, selectWindow] = useState(0);
+  useInterval(() => selectWindow(carouselIndex+1), 5000);
 
   const content = (
     <>
@@ -65,7 +48,13 @@ const Landing = () => {
       </div>
       <div className='introGroup'>
         <h3 className='inverted'>and I create</h3>
-        <h2>websites</h2>
+        <CarouselView
+          index={carouselIndex}
+          delay={1000}
+        >
+          <h2 className='carouselPane'>websites</h2>
+          <h2 className='carouselPane'>mobile apps</h2>
+        </CarouselView>
       </div>
       <div className='introGroup'>
         <h4>Let me make one for you.</h4>
