@@ -21,9 +21,7 @@ const Landing = () => {
       </div>
       <div className='introGroup'>
         <h3 className='inverted'>and I create</h3>
-        <Carousel
-          index={carouselIndex}
-        >
+        <Carousel index={carouselIndex}>
           <h2>websites</h2>
           <h2>mobile apps</h2>
         </Carousel>
@@ -41,29 +39,30 @@ const Landing = () => {
   const stripeRef = useRef();
   const stripe = useSpring({
     ref: stripeRef,
+    config: {clamp: true, friction: 22},
     from: {length: 0},
     to: {length: window.innerWidth}
   });
 
   // Animation config for the content
   const contentRef = useRef();
-  const contentTrail = useTrail(content.props.children.length, {
+  const contentTrail = useTrail(content.props.children.length+1, { // +1 for the demo on the right
     ref: contentRef,
     from: {opacity: 0, transform: 'translate(0, 50px'},
     opacity: inView ? 1 : 0,
     transform: inView ? 'translate(0,0)' : 'translate(0,50px)',
   });
+  const demoSegment = contentTrail.pop(); // Get the demo's animation config
 
-  // NOTE: for some reason the chain doesn't work without the tertiary operator
-  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [.5, 1]);
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, .3]);
 
   return (
-    <Pane inViewRef={paneRef}>
-      <animated.svg width='100%' height='200px' style={{position: 'absolute', top: '308px'}}>
+    <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
+      <animated.svg width='100%' height='200px' style={{position: 'absolute', top: '308px', zIndex: -1}}>
         <animated.rect x='0' y='0' width={stripe.length} height='100%' fill={PRIMARY_COLOUR}></animated.rect>
       </animated.svg>
-      {/* <div>
-        <> */}
+      <div id='landing_left'>
+        <div id='landing_left-wrapper'>
           {contentTrail.map((animStyle, index) => {
             return (
               <animated.div
@@ -74,16 +73,20 @@ const Landing = () => {
               </animated.div>
             );
           })}
-        {/* </>
-        <Carousel index={carouselIndex}>
-          <svg width='80%' height='80%'>
-            <rect x='0' y='0' width='100%' height='100%'></rect> 
-          </svg>
-          <svg width='40%' height='80%'>
-            <rect x='0' y='0' width='100%' height='100%'></rect> 
-          </svg>
-        </Carousel>
-      </div> */}
+        </div>
+      </div>
+      <div id='landing_right'>
+        <animated.div id='landing_right-wrapper' style={demoSegment}>
+          <Carousel index={carouselIndex}>
+            <svg width='30vw' height='20vw'>
+              <rect x='0' y='0' width='100%' height='100%' fill='#cfcfcf'></rect>
+            </svg>
+            <svg width='20vw' height='30vw'>
+              <rect x='0' y='0' width='100%' height='100%' fill='#cfcfcf'></rect>
+            </svg>
+          </Carousel>
+        </animated.div>
+      </div>
     </Pane>
   );
 };
@@ -98,10 +101,16 @@ const About = () => {
       <p>
         Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
       </p>
+      <p>
+        Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
+      </p>
+      <p>
+        Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
+      </p>
     </>
   );
 
-  const [ref, inView] = useInView({threshold: 0.5, triggerOnce: true});
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
   const textTrail = useTrail(text.props.children.length, {
     from: {opacity: 0, transform: 'translate3d(0, 50px, 0'},
@@ -110,7 +119,7 @@ const About = () => {
   });
 
   return (
-    <Pane inViewRef={ref}>
+    <Pane inViewRef={ref} style={{justifyContent: 'center'}}>
       {textTrail.map((animStyle, index) => {
         return (
           <animated.div
@@ -129,6 +138,8 @@ const App = () => {
   return (
     <>
       <Landing/>
+      <About/>
+      <About/>
       <About/>
     </>
   );
