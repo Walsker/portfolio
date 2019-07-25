@@ -55,6 +55,7 @@ const Landing = () => {
   });
   const demoSegment = contentTrail.pop(); // Get the demo's animation config
 
+  // Chain together the animations
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, .3]);
 
   return (
@@ -91,27 +92,19 @@ const Landing = () => {
 };
 
 const About = () => {
-  const content = (
-    <>
-      <div className='section' style={{flexDirection: 'row'}}>
-        
-      </div>
-      <div className='section'>
-        
-      </div>
-    </>
-  );
-
+  // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
-
+ 
+  // Animation config for the text
   const contentRef = useRef();
-  const [top, bottom] = useTrail(content.props.children.length, {
+  const [top, bottom] = useTrail(2, {
     ref: contentRef,
     from: {opacity: 0, transform: 'translateY(50px'},
     opacity: inView ? 1 : 0,
     transform: inView ? 'translateY(0)' : 'translateY(25px)'
   });
 
+  // Animation config for the logos
   const flipRef = useRef();
   const flipTrail = useTrail(5, {
     ref: flipRef,
@@ -121,6 +114,7 @@ const About = () => {
     transform: `rotateX(${inView ? 0 : 180}deg)`
   });
 
+  // Chain together the animations
   useChain(inView ? [contentRef, flipRef] : [flipRef, contentRef], [0, .5, 1.2]);
 
   return (
