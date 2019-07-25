@@ -60,6 +60,13 @@ h4 {
   margin: 20px 5vw 20px 5vw;
 }
 
+h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 32px;
+}
+
 #root {
   position: relative;
   overflow: scroll;
@@ -133,10 +140,19 @@ h4 {
 #about_top {
   flex-direction: row;
 }
+#about_bottom {
+  flex-direction: column;
+}
 
 .description {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 1vw 0 1vw;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin: 25px;
 }

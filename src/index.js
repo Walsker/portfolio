@@ -4,6 +4,7 @@ import {useInView} from 'react-intersection-observer';
 import {useChain, useSpring, useTrail, animated} from 'react-spring';
 import {Carousel, Pane} from './components';
 import {useInterval} from './hooks';
+import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
 
 const PRIMARY_COLOUR = '#E23849';
@@ -27,7 +28,7 @@ const Landing = () => {
         </Carousel>
       </div>
       <div className='introGroup'>
-        Let me make one for you.
+        <h5>Let me make one for you.</h5>
       </div>
     </>
   );
@@ -115,20 +116,27 @@ const About = () => {
     <Pane inViewRef={ref} style={{justifyContent: 'center'}}>
       <animated.div id='about_top' style={top}>
         <div className='description'>
+          <JavascriptLogo className='logo'/>
           <h4>Front End Development</h4>
           Where design meets development. I’ll create an amazing website that can dazzle everyone.
         </div>
         <div className='description'>
+          <NodeLogo className='logo'/>
           <h4>Back End Development</h4>
           This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
         </div>
         <div className='description'>
+          <ReactLogo className='logo'/>
           <h4>Mobile Development</h4>
           Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
         </div>
       </animated.div>
       <animated.div id='about_bottom' style={bottom}>
-        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications.</p>
+        <div>
+          <RavensLogo className='logo'/>
+          <KandyLogo className='logo'/>
+        </div>
+        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
       </animated.div>
     </Pane>
   );
@@ -137,10 +145,10 @@ const About = () => {
 const App = () => {
   return (
     <>
-      {/* <Landing/> */}
+      <Landing/>
       <About/>
-      <About/>
-      <About/>
+      {/* <About/>
+      <About/> */}
     </>
   );
 };
