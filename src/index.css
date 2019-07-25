@@ -22,6 +22,9 @@ body {
   background: var(--lightColor);
   color: var(--darkColor);
   font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
 }
 
 h1 {
@@ -50,9 +53,11 @@ h3 {
 }
 
 h4 {
+  font-family: 'Roboto Slab', serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: 28px;
+  font-weight: bold;
+  font-size: 32px;
+  margin: 20px 5vw 20px 5vw;
 }
 
 #root {
@@ -62,20 +67,14 @@ h4 {
   height: 100%;
 }
 
-#stripe {
-  position: relative;
-  top: 500;
+.inverted {
+  color: var(--lightColor);
 }
 
 /* Landing pane styles */
-
-/* credit: https://www.webfx.com/blog/web-design/disable-text-selection/ */
-.disable-selection, .introGroup {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+#stripe {
+  position: relative;
+  top: 500;
 }
 
 #landing_left, #landing_right {
@@ -108,11 +107,36 @@ h4 {
   margin-left: 5vw;
 }
 
+/* credit: https://www.webfx.com/blog/web-design/disable-text-selection/ */
+.disable-selection, .introGroup {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
 .introGroup {
   margin: 85px 0 0 15vw;
   white-space: nowrap;
 }
 
-.inverted {
-  color: var(--lightColor);
+/* About pane styles */
+#about_top, #about_bottom {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 0 5vw 0 5vw;
+  text-align: center;
+}
+
+#about_top {
+  flex-direction: row;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1vw 0 1vw;
 }

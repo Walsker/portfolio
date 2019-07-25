@@ -27,7 +27,7 @@ const Landing = () => {
         </Carousel>
       </div>
       <div className='introGroup'>
-        <h4>Let me make one for you.</h4>
+        Let me make one for you.
       </div>
     </>
   );
@@ -92,27 +92,20 @@ const Landing = () => {
 };
 
 const About = () => {
-  const text = (
+  const content = (
     <>
-      <h1>Part 2</h1> 
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam diam quam, dictum sed laoreet dictum, laoreet eget nibh. Praesent porta tempor dui, quis eleifend orci efficitur ut. Ut in nisl hendrerit, consequat tellus consequat, cursus justo. Duis neque justo, convallis ut eleifend id, commodo non purus. Fusce auctor dui in libero volutpat, a auctor mi semper. Mauris auctor sed massa sed porta. Morbi malesuada justo quis quam tincidunt, vel mattis nisi scelerisque. Aenean pulvinar nibh elit. Donec non velit id justo convallis iaculis. Vivamus pretium est felis, sit amet faucibus nunc vulputate sit amet. Fusce neque urna, molestie vel aliquet in, fringilla a mi. Vivamus malesuada ligula tortor, eu molestie mauris placerat sed. Quisque sollicitudin a velit vitae rutrum. Proin nisl nisi, tincidunt quis ex sed, posuere vestibulum diam.
-      </p>
-      <p>
-        Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
-      </p>
-      <p>
-        Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
-      </p>
-      <p>
-        Curabitur ac rhoncus odio. Donec volutpat massa ac posuere auctor. Curabitur rutrum at arcu ut tempor. Fusce dapibus odio eu consectetur sodales. Phasellus venenatis sed nibh in dapibus. Praesent congue sed est vel faucibus. In justo tortor, interdum sit amet arcu ac, ullamcorper viverra elit. Nulla facilisi. Morbi posuere auctor nisi sit amet ultricies. Sed iaculis mauris id nunc consequat venenatis. Integer auctor purus placerat augue aliquam, sed facilisis ex imperdiet.
-      </p>
+      <div className='section' style={{flexDirection: 'row'}}>
+        
+      </div>
+      <div className='section'>
+        
+      </div>
     </>
   );
 
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
-  const textTrail = useTrail(text.props.children.length, {
+  const [top, bottom] = useTrail(content.props.children.length, {
     from: {opacity: 0, transform: 'translate3d(0, 50px, 0'},
     opacity: inView ? 1 : 0,
     transform: inView ? 'translate3d(0,0,0)' : 'translate3d(0,25px,0)'
@@ -120,16 +113,23 @@ const About = () => {
 
   return (
     <Pane inViewRef={ref} style={{justifyContent: 'center'}}>
-      {textTrail.map((animStyle, index) => {
-        return (
-          <animated.div
-            key={index}
-            style={animStyle}
-          >
-            {text.props.children[index]}
-          </animated.div>
-        );
-      })}
+      <animated.div id='about_top' style={top}>
+        <div className='description'>
+          <h4>Front End Development</h4>
+          Where design meets development. I’ll create an amazing website that can dazzle everyone.
+        </div>
+        <div className='description'>
+          <h4>Back End Development</h4>
+          This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
+        </div>
+        <div className='description'>
+          <h4>Mobile Development</h4>
+          Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
+        </div>
+      </animated.div>
+      <animated.div id='about_bottom' style={bottom}>
+        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications.</p>
+      </animated.div>
     </Pane>
   );
 };
@@ -137,7 +137,7 @@ const About = () => {
 const App = () => {
   return (
     <>
-      <Landing/>
+      {/* <Landing/> */}
       <About/>
       <About/>
       <About/>
