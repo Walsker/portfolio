@@ -1,3 +1,4 @@
+import useFadeIn from './useFadeIn';
 import useInterval from './useInterval';
 
-export {useInterval};
+export {useFadeIn, useInterval};

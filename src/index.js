@@ -2,12 +2,13 @@ import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
 import {useChain, useSpring, useTrail, animated} from 'react-spring';
-import {Carousel, Pane} from './components';
-import {useInterval} from './hooks';
+import {Carousel, Pane, Stripe} from './components';
+import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
 
 const PRIMARY_COLOUR = '#E23849';
+const ACCENT_COLOUR = '#F9DC5C';
 
 const Landing = () => {
   // State for moving the carousel
@@ -36,23 +37,12 @@ const Landing = () => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [paneRef, inView] = useInView({threshold: 0.5, triggerOnce: true});
   
-  // Animation config for the stripe
+  // Ref for the stripe
   const stripeRef = useRef();
-  const stripe = useSpring({
-    ref: stripeRef,
-    config: {clamp: true, friction: 22},
-    from: {length: 0},
-    to: {length: window.innerWidth}
-  });
 
   // Animation config for the content
   const contentRef = useRef();
-  const contentTrail = useTrail(content.props.children.length+1, { // +1 for the demo on the right
-    ref: contentRef,
-    from: {opacity: 0, transform: 'translateY(50px)'},
-    opacity: inView ? 1 : 0,
-    transform: inView ? 'translateY(0)' : 'translateY(50px)',
-  });
+  const contentTrail = useFadeIn(content.props.children.length+1, contentRef, inView);
   const demoSegment = contentTrail.pop(); // Get the demo's animation config
 
   // Chain together the animations
@@ -60,9 +50,7 @@ const Landing = () => {
 
   return (
     <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
-      <animated.svg width='100%' height='200px' style={{position: 'absolute', top: '308px', zIndex: -1}}>
-        <animated.rect x='0' y='0' width={stripe.length} height='100%' fill={PRIMARY_COLOUR}></animated.rect>
-      </animated.svg>
+      <Stripe stripeRef={stripeRef} inView={inView} top='308px' size='200px' colour={PRIMARY_COLOUR}/>
       <div id='landing_left'>
         <div id='landing_left-wrapper'>
           {contentTrail.map((animStyle, index) => (
@@ -79,10 +67,10 @@ const Landing = () => {
         <animated.div id='landing_right-wrapper' style={demoSegment}>
           <Carousel index={carouselIndex}>
             <svg width='30vw' height='20vw' style={{boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)'}}>
-              <rect x='0' y='0' width='100%' height='100%' fill='#cfcfcf'></rect>
+              <rect x='0' y='0' rx='20' ry='20' width='100%' height='100%' fill='#cfcfcf'></rect>
             </svg>
             <svg width='20vw' height='30vw' style={{boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)'}}>
-              <rect x='0' y='0' width='100%' height='100%' fill='#cfcfcf'></rect>
+              <rect x='0' y='0' rx='20' ry='20' width='100%' height='100%' fill='#cfcfcf'></rect>
             </svg>
           </Carousel>
         </animated.div>
@@ -95,14 +83,12 @@ const About = () => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
  
+  // Ref for the stripe
+  const stripeRef = useRef();
+
   // Animation config for the text
   const contentRef = useRef();
-  const [top, bottom] = useTrail(2, {
-    ref: contentRef,
-    from: {opacity: 0, transform: 'translateY(50px'},
-    opacity: inView ? 1 : 0,
-    transform: inView ? 'translateY(0)' : 'translateY(25px)'
-  });
+  const [top, bottom] = useFadeIn(2, contentRef, inView);
 
   // Animation config for the logos
   const flipRef = useRef();
@@ -115,10 +101,11 @@ const About = () => {
   });
 
   // Chain together the animations
-  useChain(inView ? [contentRef, flipRef] : [flipRef, contentRef], [0, .5, 1.2]);
+  useChain(inView ? [stripeRef, contentRef, flipRef] : [flipRef, contentRef, stripeRef], [0, 0.3, .8]);
 
   return (
-    <Pane inViewRef={ref} style={{justifyContent: 'center'}}>
+    <Pane inViewRef={ref}>
+      <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour={ACCENT_COLOUR}/>
       <animated.div id='about_top' style={top}>
         <div className='description'>
           <JavascriptLogo style={flipTrail[0]}/>
@@ -147,11 +134,65 @@ const About = () => {
   );
 };
 
+const GradeAid = () => {
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+  // Animation config for the project
+  const contentRef = useRef();
+  const [fadeIn] = useFadeIn(1, contentRef, inView);
+
+  // Ref for the stripe
+  const stripeRef = useRef();
+
+  // Chain together the animations
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, .75]);
+
+  return (
+    <Pane inViewRef={ref}>
+      <Stripe stripeRef={stripeRef} inView={inView} top='5vh' size='90vh' colour='#5921D8' style={{maxHeight: '720px', minHeight: '675px'}}/>
+      <animated.div id='gradeAid_container' style={fadeIn}>
+        <div id='ga_left'>
+          <svg width='22vw' height='40vw' style={{boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)'}}>
+            <rect x='0' y='0' rx='20' ry='20' width='100%' height='100%' fill='#cfcfcf'></rect>
+          </svg>
+        </div>
+        <div id='ga_right'>
+          <h2 id='ga_logo'>Grade<br/>Aid</h2>
+          <div className='ga_section'>
+            <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10}}/>
+            <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10, margin: '0 20px'}}/>
+          </div>
+          <div className='ga_section'>
+            Organize your assignments and take control of your grades.
+          </div>
+          {/* <div className='ga_section'>
+            <span className='bold'>GitHub</span>
+          </div> */}
+        </div>
+      </animated.div>
+    </Pane>
+  );
+};
+
+// const Contact = () => {
+//   // A hook for knowing if an element attached with paneRef is on the screen
+//   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+//   return (
+//     <Pane inViewRef={ref}>
+
+//     </Pane>
+//   );  
+// };
+
 const App = () => {
   return (
     <>
       <Landing/>
       <About/>
+      <GradeAid/>
+      {/* <Contact/> */}
     </>
   );
 };
