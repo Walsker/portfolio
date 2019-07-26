@@ -104,7 +104,6 @@ h5 {
   height: 100%;
   align-items: center;
   justify-content: center;
-  margin-right: 20vw;
 }
 
 #landing_right {
@@ -170,7 +169,7 @@ h5 {
 }
 
 /* Grade Aid pane styles */
-#gradeAid_container {
+#ga_container {
   display: flex;
   flex: 1;
   color: var(--lightColor);
@@ -199,4 +198,27 @@ h5 {
   margin: 25px 0 40px;
   display: flex;
   flex-direction: row-reverse;
+}
+
+/* Contact pane styles */
+#contact_container {
+  background-color: var(--darkColor);
+  color: var(--lightColor);
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.contact_section {
+  margin-bottom: 2vw;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contact_subSection {
+  margin: 2vh;
 }

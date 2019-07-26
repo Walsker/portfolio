@@ -3,11 +3,8 @@ import {useTransition, animated} from 'react-spring';
 import style from './carousel.module.css';
 
 const Carousel = ({children, index}) => {
-
   // Creating refs to all the children in the carousel
   const childRefs = useRef(children);
-
-  const windows = children.map((child, index) => <div key={index} className={style.container} style={{height: childRefs.current[index].props.height}}>{child}</div>);
 
   const transitions = useTransition(index % children.length, null, {
     from: {opacity: 0, transform: 'translate(-100px, 0)'},
@@ -15,14 +12,14 @@ const Carousel = ({children, index}) => {
     leave: {opacity: 0, transform: 'translate(100px, 0)'}
   });
 
-  if (childRefs.current[index % children.length].props.height) {
+  if (childRefs.current[index % children.length].props.style && childRefs.current[index % children.length].props.style) {
     return transitions.map(({item, props, key}) => (
       <animated.div 
         key={key}
         style={props}
         className={style.window}
       >
-        {windows[item]} 
+        {children[item]} 
       </animated.div>
     ));
   }
@@ -35,7 +32,7 @@ const Carousel = ({children, index}) => {
             style={props}
             className={style.window}
           >
-            {windows[item]} 
+            {children[item]} 
           </animated.div>
         ))}
       </div>
