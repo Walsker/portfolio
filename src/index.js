@@ -149,12 +149,10 @@ const GradeAid = () => {
       <Stripe stripeRef={stripeRef} inView={inView} top='5%' size='90%' colour='#5921D8'/>
       <animated.div id='ga_container' style={fadeIn}>
         <div id='ga_left'>
-          <svg width='22vw' height='100%' style={{boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)'}}>
-            <rect x='0' y='0' rx='20' ry='20' width='100%' height='100%' fill='#cfcfcf'></rect>
-          </svg>
+          <div style={{width: '22vw', height: '100%', boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)', borderRadius: 20, backgroundColor: '#CFCFCF'}}/>
         </div>
         <div id='ga_right'>
-          <h2 id='ga_logo'>Grade<br/>Aid</h2>
+          <h2 style={{color: '#ffc107'}}>Grade<br/>Aid</h2>
           <div className='ga_section'>
             <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10}}/>
             <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10, margin: '0 20px'}}/>
@@ -188,7 +186,7 @@ const Contact = () => {
       <div id='contact_container'>
         <div className='contact_section'>
           <h3>Already have an idea in mind? Let’s not wait.</h3>
-          <animated.h2 style={fadeIn}>yes@walcreates.ca</animated.h2>
+          <animated.h2 style={fadeIn}>me@walcreates.ca</animated.h2>
         </div>
         <div className='contact_section'>
           <div className='contact_subSection' style={{width: 50, height: 50, backgroundColor: '#CFCFCF', borderRadius: 5}}/>
