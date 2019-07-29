@@ -10,7 +10,7 @@ const Stripe = ({stripeRef, inView, top, size, colour, style}) => {
   });
 
   return (
-    <svg width='100%' height={size} style={{position: 'absolute', top, zIndex: -1, ...style}}>
+    <svg width='100%' height={size} style={{position: 'absolute', top, ...style}}>
       <animated.rect x='0' y='0' width={length} height='100%' fill={colour}></animated.rect>
     </svg>
   );

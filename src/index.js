@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
 import {useChain, useSpring, useTrail, animated} from 'react-spring';
-import {Carousel, Pane, Stripe} from './components';
+import {Carousel, Pane, SocialLogo, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
@@ -29,7 +29,7 @@ const Landing = () => {
         </Carousel>
       </div>
       <div className='introGroup'>
-        <h5>Let me make one for you.</h5>
+        <h5>Let me make your perfect website.</h5>
       </div>
     </>
   );
@@ -152,7 +152,7 @@ const GradeAid = () => {
           <div style={{width: '22vw', height: '100%', boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)', borderRadius: 20, backgroundColor: '#CFCFCF'}}/>
         </div>
         <div id='ga_right'>
-          <h2 style={{color: '#ffc107'}}>Grade<br/>Aid</h2>
+          <h2>Grade<br/>Aid</h2>
           <div className='ga_section'>
             <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10}}/>
             <div style={{width: 150, height: 50, backgroundColor: 'black', borderRadius: 10, margin: '0 20px'}}/>
@@ -186,16 +186,23 @@ const Contact = () => {
       <div id='contact_container'>
         <div className='contact_section'>
           <h3>Already have an idea in mind? Let’s not wait.</h3>
-          <animated.h2 style={fadeIn}>me@walcreates.ca</animated.h2>
+          <animated.h2 style={fadeIn}>
+            <a href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
+          </animated.h2>
         </div>
         <div className='contact_section'>
           <div className='contact_subSection' style={{width: 50, height: 50, backgroundColor: '#CFCFCF', borderRadius: 5}}/>
-          <span className='contact_subSection'>
+          <div className='contact_subSection'>
+            <SocialLogo type='LinkedIn' link='https://www.linkedin.com/in/wal-wal'/>
+            <SocialLogo type='GitHub' link='https://github.com/Walsker'/>
+            <SocialLogo type='Twitter' link='https://twitter.com'/>
+          </div>
+          <div className='contact_subSection'>
             Made with <span role='img' aria-label='<3'>💛</span> in <span style={{color: ACCENT_COLOUR}}>Ottawa</span>
-          </span>
-          <span className='contact_subSection'>
+          </div>
+          <div className='contact_subSection'>
             Copyright 2019 © Wal Wal. All rights reserved.
-          </span>
+          </div>
         </div>
       </div>
     </Pane>
