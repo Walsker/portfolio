@@ -3,6 +3,7 @@
   --darkColor: #303030;
   --primaryColor: #E23849;
   --accentColor: #F9DC5C;
+  --gaTheme: #5921D8;
 }
 
 html{
@@ -37,22 +38,26 @@ a:link:active, a:visited:active {
 }
 
 h1 {
-  font-family: 'Lilita One', cursive;
+  /* font-family: 'Archivo Black', sans-serif;
+  font-size: 110px; */
+  font-family: 'Rubik', sans-serif;
   font-size: 120px;
-  /* font-family: 'Roboto Slab', serif; */
+  /* font-family: 'Roboto Slab', serif;
+  font-size: 110px; */
   font-style: normal;
   font-weight: bold;
-  /* font-size: 110px; */
   margin: 0;
 }
 
 h2 {
-  font-family: 'Lilita One', cursive;
+  /* font-family: 'Archivo Black', sans-serif;
+  font-size: 80px; */
+  font-family: 'Rubik', sans-serif;
   font-size: 90px;
-  /* font-family: 'Roboto Slab', serif; */
+  /* font-family: 'Roboto Slab', serif;
+  font-size: 80px; */
   font-style: normal;
   font-weight: bold;
-  /* font-size: 80px; */
   margin: 0;
   color: var(--accentColor);
 }
@@ -66,10 +71,12 @@ h3 {
 }
 
 h4 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Rubik', sans-serif;
+  font-size: 36px;
+  /* font-family: 'Roboto Slab', serif;
+  font-size: 32px; */
   font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
+  font-weight: 900;
   margin: 20px 5vw 20px 5vw;
 }
 
@@ -135,7 +142,7 @@ h5 {
 }
 
 .introGroup {
-  margin: 85px 0 0 15vw;
+  margin: 82px 0 0 15vw;
   white-space: nowrap;
 }
 

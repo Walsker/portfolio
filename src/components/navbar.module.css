@@ -1,0 +1,46 @@
+#container {
+  z-index: 1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  font-family: 'Rubik', sans-serif;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0 1vw;
+}
+
+#logo {
+  margin: 5px 5vw;
+  /* display: flex;
+  width: 50;
+  height: 50;
+  background-color: '#CFCFCF';
+  border-radius: 5;
+  margin: 0; */
+}
+
+.button {
+  margin: 0 20px;
+  width: 75px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: linear-gradient(var(--accentColor), var(--accentColor));
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 100 88%;
+  transition: all 0.2s ease-in;
+  /* transition:  background-image 0.2s ease-in; */
+}
+
+.button:hover {
+  cursor: pointer;
+  background-size: 100% 88%;
+}

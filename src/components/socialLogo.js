@@ -1,5 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faLink} from '@fortawesome/free-solid-svg-icons';
 import {
   faLinkedin,
   faTwitter,
@@ -20,6 +21,8 @@ const SocialLogo = ({type, link}) => {
   case 'GitHub':
     icon = faGithub;
     break;
+  default:
+    icon = faLink;
   }
 
   return (

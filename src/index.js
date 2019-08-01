@@ -2,13 +2,10 @@ import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
 import {useChain, useSpring, useTrail, animated} from 'react-spring';
-import {Carousel, Pane, SocialLogo, Stripe} from './components';
+import {Carousel, Navbar, Pane, SocialLogo, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
-
-const PRIMARY_COLOUR = '#E23849';
-const ACCENT_COLOUR = '#F9DC5C';
 
 const Landing = () => {
   // State for moving the carousel
@@ -50,7 +47,7 @@ const Landing = () => {
 
   return (
     <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='308px' size='200px' colour={PRIMARY_COLOUR}/>
+      <Stripe stripeRef={stripeRef} inView={inView} top='308px' size='200px' colour='var(--primaryColor)'/>
       <div id='landing_left'>
         <div id='landing_left-wrapper'>
           {contentTrail.map((animStyle, index) => (
@@ -101,7 +98,7 @@ const About = () => {
 
   return (
     <Pane inViewRef={ref}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour={ACCENT_COLOUR}/>
+      <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour='var(--accentColor'/>
       <animated.div id='about_top' style={top}>
         <div className='description'>
           <JavascriptLogo style={flipTrail[0]}/>
@@ -146,7 +143,7 @@ const GradeAid = () => {
 
   return (
     <Pane inViewRef={ref}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='5%' size='90%' colour='#5921D8'/>
+      <Stripe stripeRef={stripeRef} inView={inView} top='5%' size='90%' colour='var(--gaTheme)'/>
       <animated.div id='ga_container' style={fadeIn}>
         <div id='ga_left'>
           <div style={{width: '22vw', height: '100%', boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)', borderRadius: 20, backgroundColor: '#CFCFCF'}}/>
@@ -198,7 +195,7 @@ const Contact = () => {
             <SocialLogo type='Twitter' link='https://twitter.com'/>
           </div>
           <div className='contact_subSection'>
-            Made with <span role='img' aria-label='<3'>💛</span> in <span style={{color: ACCENT_COLOUR}}>Ottawa</span>
+            Made with <span role='img' aria-label='<3'>💛</span> in <span style={{color: 'var(--accentColor)'}}>Ottawa</span>
           </div>
           <div className='contact_subSection'>
             Copyright 2019 © Wal Wal. All rights reserved.
@@ -209,15 +206,14 @@ const Contact = () => {
   );  
 };
 
-const App = () => {
-  return (
-    <>
-      <Landing/>
-      <About/>
-      <GradeAid/>
-      <Contact/>
-    </>
-  );
-};
+const App = () => (
+  <>
+    <Navbar/>
+    <Landing/>
+    <About/>
+    <GradeAid/>
+    <Contact/>
+  </>
+);
 
 ReactDOM.render(<App/>, document.getElementById('root'));
