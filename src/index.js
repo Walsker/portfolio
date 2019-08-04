@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
-import {useChain, useSpring, useTrail, animated} from 'react-spring';
+import {useChain, useSpring, animated} from 'react-spring';
 import {Carousel, Navbar, Pane, SocialLogo, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
@@ -72,7 +72,7 @@ const Landing = () => {
   );
 };
 
-const About = () => {
+const About = ({id}) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
  
@@ -85,41 +85,34 @@ const About = () => {
 
   // Animation config for the logos
   const flipRef = useRef();
-  const flipTrail = useTrail(5, {
-    ref: flipRef,
-    position: 'absolute',
-    from: {opacity: 0, transform: 'rotateX(180deg)'},
-    opacity: inView ? 1 : 0,
-    transform: `rotateX(${inView ? 0 : 180}deg)`
-  });
 
   // Chain together the animations
   useChain(inView ? [stripeRef, contentRef, flipRef] : [flipRef, contentRef, stripeRef], [0, 0.35, .6]);
 
   return (
-    <Pane inViewRef={ref}>
+    <Pane inViewRef={ref} id={id}>
       <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour='var(--accentColor'/>
       <animated.div id='about_top' style={top}>
         <div className='description'>
-          <JavascriptLogo style={flipTrail[0]}/>
+          <JavascriptLogo className='logo'/>
           <h4>Front End Development</h4>
           Where design meets development. I’ll create an amazing website that can dazzle everyone.
         </div>
         <div className='description'>
-          <NodeLogo style={flipTrail[1]}/>
+          <NodeLogo className='logo'/>
           <h4>Back End Development</h4>
           This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
         </div>
         <div className='description'>
-          <ReactLogo style={flipTrail[2]}/>
+          <ReactLogo className='logo'/>
           <h4>Mobile Development</h4>
           Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
         </div>
       </animated.div>
       <animated.div id='about_bottom' style={bottom}>
         <div id='logo-pair'>
-          <RavensLogo style={flipTrail[3]}/>
-          <KandyLogo style={flipTrail[4]}/>
+          <RavensLogo className='logo'/>
+          <KandyLogo className='logo'/>
         </div>
         <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
       </animated.div>
@@ -127,7 +120,7 @@ const About = () => {
   );
 };
 
-const GradeAid = () => {
+const GradeAid = ({id}) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
@@ -142,7 +135,7 @@ const GradeAid = () => {
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, .5]);
 
   return (
-    <Pane inViewRef={ref}>
+    <Pane inViewRef={ref} id={id}>
       <Stripe stripeRef={stripeRef} inView={inView} top='5%' size='90%' colour='var(--gaTheme)'/>
       <animated.div id='ga_container' style={fadeIn}>
         <div id='ga_left'>
@@ -166,7 +159,7 @@ const GradeAid = () => {
   );
 };
 
-const Contact = () => {
+const Contact = ({id}) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
@@ -179,7 +172,7 @@ const Contact = () => {
   });
 
   return (
-    <Pane inViewRef={ref}>
+    <Pane inViewRef={ref} id={id}>
       <div id='contact_container'>
         <div className='contact_section'>
           <h3>Already have an idea in mind? Let’s not wait.</h3>
@@ -210,9 +203,9 @@ const App = () => (
   <>
     <Navbar/>
     <Landing/>
-    <About/>
-    <GradeAid/>
-    <Contact/>
+    <About id='About'/>
+    <GradeAid id='Projects'/>
+    <Contact id='Contact'/>
   </>
 );
 

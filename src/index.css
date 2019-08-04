@@ -38,24 +38,16 @@ a:link:active, a:visited:active {
 }
 
 h1 {
-  /* font-family: 'Archivo Black', sans-serif;
-  font-size: 110px; */
-  font-family: 'Rubik', sans-serif;
-  font-size: 120px;
-  /* font-family: 'Roboto Slab', serif;
-  font-size: 110px; */
+  font-family: 'Roboto Slab', serif;
+  font-size: 110px;
   font-style: normal;
   font-weight: bold;
   margin: 0;
 }
 
 h2 {
-  /* font-family: 'Archivo Black', sans-serif;
-  font-size: 80px; */
-  font-family: 'Rubik', sans-serif;
-  font-size: 90px;
-  /* font-family: 'Roboto Slab', serif;
-  font-size: 80px; */
+  font-family: 'Roboto Slab', serif;
+  font-size: 80px;
   font-style: normal;
   font-weight: bold;
   margin: 0;
@@ -71,10 +63,8 @@ h3 {
 }
 
 h4 {
-  font-family: 'Rubik', sans-serif;
-  font-size: 36px;
-  /* font-family: 'Roboto Slab', serif;
-  font-size: 32px; */
+  font-family: 'Roboto Slab', serif;
+  font-size: 32px;
   font-style: normal;
   font-weight: 900;
   margin: 20px 5vw 20px 5vw;
@@ -228,12 +218,6 @@ h5 {
   flex: 1;
   flex-direction: column;
 }
-
-/* #contact_logos {
-  display: flex;
-  flex-direction: row;
-  margin: 
-} */
 
 .contact_section {
   margin-bottom: 2vw;
