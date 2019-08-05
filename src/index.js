@@ -1,81 +1,93 @@
-import React, {useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
 import {Carousel, Navbar, Pane, SocialIcon, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
 
-const Landing = () => {
+const Landing = (props) => {
+  // Hooks for the scrolling indicator
+  const [atTop, setAtTop] = useState(window.pageYOffset <= 0);
+  const handleScroll = useCallback(() => setAtTop(window.pageYOffset <= 50));
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
+  const scrollIndicator = !atTop ? <div/> : (
+    <div id='scroll_indicator' className='unselectable'>
+      scroll<br/>
+      <FontAwesomeIcon icon={faChevronDown} size='2x'/>
+    </div>
+  );
+
   // State for moving the carousel
   const [carouselIndex, selectWindow] = useState(0);
   useInterval(() => selectWindow((carouselIndex+1) % 2), 5000);
 
-  const content = (
-    <>
-      <div className='introGroup unselectable'>
-        <h3>Hey, I'm</h3>
-        <h1>Wal Wal</h1>
-      </div>
-      <div className='introGroup unselectable'>
-        <h3 className='inverted'>and I create</h3>
-        <Carousel index={carouselIndex}>
-          <h2>websites</h2>
-          <h2>mobile apps</h2>
-        </Carousel>
-      </div>
-      <div className='introGroup unselectable'>
-        <h5>Let me make your perfect website.</h5>
-      </div>
-    </>
-  );
-  
   // A hook for knowing if an element attached with paneRef is on the screen
   const [paneRef, inView] = useInView({threshold: 0.5, triggerOnce: true});
-  
+
   // Ref for the stripe
   const stripeRef = useRef();
 
   // Animation config for the content
   const contentRef = useRef();
-  const contentTrail = useFadeIn(content.props.children.length+1, contentRef, inView);
-  const demoSegment = contentTrail.pop(); // Get the demo's animation config
+  const contentTrail = useFadeIn(4, contentRef, inView);
 
   // Chain together the animations
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, .3]);
 
   return (
     <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='308px' size='200px' colour='var(--primaryColor)'/>
-      <div id='landing_left'>
-        <div id='landing_left-wrapper'>
-          {contentTrail.map((animStyle, index) => (
-            <animated.div
-              key={index}
-              style={animStyle}
-            >
-              {content.props.children[index]}
-            </animated.div>
-          ))}
-        </div>
+      <Stripe stripeRef={stripeRef} inView={inView} top='235px' size='140px' colour='var(--primaryColor)'/>
+      {scrollIndicator}
+      <div id='landing_left' className='unselectable'>
+        <animated.div style={contentTrail[0]}>
+          <h3>I create</h3>
+        </animated.div>
+        <animated.div style={contentTrail[1]}>
+          <Carousel index={carouselIndex}>
+            <h1>websites</h1>
+            <h1>mobile apps</h1>
+          </Carousel>
+        </animated.div>
       </div>
       <div id='landing_right'>
-        <animated.div id='landing_right-wrapper' style={demoSegment}>
-          <Carousel index={carouselIndex} windowStyle={{height: '30vw'}}>
-            <div style={{width: '30vw', height: '20vw', boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)', backgroundColor: '#CFCFCF', borderRadius: 20}}/>
-            <div style={{width: '20vw', height: '30vw', boxShadow: '1px 2px 25px 1px rgba(0, 0, 0, 0.2)', backgroundColor: '#CFCFCF', borderRadius: 20}}/>
-          </Carousel>
+        <animated.div id='keep_moving_forward' style={contentTrail[3]}>
+          keep moving forward
+        </animated.div>
+        <animated.div id='values' style={contentTrail[3]}>
+          <div className='value_box'>
+            <span style={{fontWeight: 'bold'}}>my passion</span>
+            <br/>improvement
+          </div>
+          <div className='value_box'>
+            <span style={{fontWeight: 'bold'}}>the key</span>
+            <br/>collaboration
+          </div>
+          <div className='value_box'>
+            <span style={{fontWeight: 'bold'}}>my goal</span>
+            <br/>success
+          </div>
+        </animated.div>
+        <animated.div id='shortcuts' style={contentTrail[2]}>
+          <div className='landing_button'>projects</div>
+          <div className='landing_button'>resume</div>
         </animated.div>
       </div>
     </Pane>
   );
 };
 
-const About = ({id}) => {
+const About = (props) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
- 
+
   // Ref for the stripe
   const stripeRef = useRef();
 
@@ -90,9 +102,9 @@ const About = ({id}) => {
   useChain(inView ? [stripeRef, contentRef, flipRef] : [flipRef, contentRef, stripeRef], [0, 0.35, .6]);
 
   return (
-    <Pane inViewRef={ref} id={id}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour='var(--accentColor'/>
-      <animated.div id='about_top' style={top}>
+    <Pane inViewRef={ref} {...props}>
+      {/* <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour='var(--accentColor'/> */}
+      {/* <animated.div id='about_top' style={top}>
         <div className='description'>
           <JavascriptLogo className='logo'/>
           <h4>Front End Development</h4>
@@ -115,7 +127,7 @@ const About = ({id}) => {
           <KandyLogo className='logo'/>
         </div>
         <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
-      </animated.div>
+      </animated.div> */}
     </Pane>
   );
 };
@@ -203,9 +215,9 @@ const App = () => (
   <>
     <Navbar/>
     <Landing/>
-    <About id='About'/>
-    <GradeAid id='Projects'/>
-    <Contact id='Contact'/>
+    <About/>
+    {/* <GradeAid id='Projects'/> */}
+    {/* <Contact id='Contact'/> */}
   </>
 );
 
