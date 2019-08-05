@@ -2,7 +2,6 @@
   --white: #FAFAFA;
   --black: #141111;
   --primaryColor: #E23849;
-  --accentColor: #F9DC5C;
   --gaTheme: #5921D8;
 }
 
@@ -41,7 +40,7 @@ h2 {
   font-style: normal;
   font-weight: bold;
   margin: 0;
-  color: var(--accentColor);
+  color: var(--primaryColor);
 }
 
 h3 {
@@ -160,7 +159,7 @@ h5 {
 
 .landing_button {
   font-size: 28px;
-  text-decoration: underline;
+  text-decoration: none;
   padding: 0 20px;
   transition: 0.1s ease-in;
   cursor: pointer;
@@ -168,6 +167,7 @@ h5 {
 
 .landing_button:hover {
   color: var(--primaryColor);
+  text-decoration: underline;
 }
 
 /* About pane styles */
@@ -289,4 +289,18 @@ h5 {
 
 .contact_subSection {
   margin: 2vh;
+}
+
+.link, .link:visited {
+  color: var(--primaryColor);
+  transition: 0.1s ease-in;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--white);
+}
+
+.icon {
+  margin: 0 15px;
 }

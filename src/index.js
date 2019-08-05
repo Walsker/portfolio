@@ -2,11 +2,16 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {
+  faLinkedin,
+  faTwitter,
+  faGithub
+} from '@fortawesome/free-brands-svg-icons';
 import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
-import {Carousel, Navbar, Pane, SocialIcon, Stripe} from './components';
+import {Carousel, Navbar, Pane, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
-import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
+import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo, WalLogo} from './assets';
 import './index.css';
 
 const Landing = (props) => {
@@ -224,6 +229,12 @@ const GradeAid = ({id}) => {
   );
 };
 
+const Icon = ({icon, link}) => (
+  <a className='link icon' target='_blank' rel='noopener noreferrer external' href={link}>
+    <FontAwesomeIcon icon={icon} size='2x'/>
+  </a>
+);
+
 const Contact = ({id}) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
@@ -242,18 +253,18 @@ const Contact = ({id}) => {
         <div className='contact_section'>
           <h3>Already have an idea in mind? Let’s not wait.</h3>
           <animated.h2 style={fadeIn}>
-            <a href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
+            <a className='link' href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
           </animated.h2>
         </div>
         <div className='contact_section'>
-          <div className='contact_subSection' style={{width: 50, height: 50, backgroundColor: '#CFCFCF', borderRadius: 5}}/>
+          <WalLogo className='contact_subSection logo'/>
           <div className='contact_subSection'>
-            <SocialIcon type='LinkedIn' link='https://www.linkedin.com/in/wal-wal'/>
-            <SocialIcon type='GitHub' link='https://github.com/Walsker'/>
-            <SocialIcon type='Twitter' link='https://twitter.com'/>
+            <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
+            <Icon icon={faGithub} link='https://github.com/Walsker'/>
+            <Icon icon={faTwitter} link='https://twitter.com'/>
           </div>
           <div className='contact_subSection'>
-            Made with <span role='img' aria-label='<3'>💛</span> in <span style={{color: 'var(--accentColor)'}}>Ottawa</span>
+            Made with <span role='img' aria-label='<3'>❤️</span> in <span style={{color: 'var(--primaryColor)'}}>Ottawa</span>
           </div>
           <div className='contact_subSection'>
             Copyright 2019 © Wal Wal. All rights reserved.
@@ -271,7 +282,7 @@ const App = () => (
     <About/>
     <Skills/>
     {/* <GradeAid id='Projects'/> */}
-    {/* <Contact id='Contact'/> */}
+    <Contact id='Contact'/>
   </>
 );
 

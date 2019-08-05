@@ -105,13 +105,13 @@
   color: var(--black);
 }
 
-.icon, a {
+.icon {
   margin: 0 20px;
   color: var(--black);
   transition: 0.1s ease-in;
 }
 
-a:hover {
+.icon:hover {
   color: var(--white);
 }
 
