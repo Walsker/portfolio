@@ -5,9 +5,11 @@
 <style type="text/css">
 	.st0{fill:#E23849;}
 	.st1{fill:#FAFAFA;}
-	.st2{font-family:'Roboto Slab';}
-	.st3{font-size:887.7266px;}
 </style>
 <rect class="st0" width="1080" height="1080"/>
-<text transform="matrix(1 0 0 1 112.6084 860.5498)" class="st1 st2 st3">W</text>
+<g>
+	<path class="st1" d="M954.39,305.72l-52.01,6.5L774.5,860.55H657.03L541.3,443.99h-2.6L422.97,860.55H305.5L176.76,312.22
+		l-51.58-6.5v-76.29h232.33v76.29l-57.65,9.97l72.39,345.9l2.6,0.43l118.33-432.59h93.19l119.2,432.59l2.6-0.43l71.95-345.9
+		l-57.65-9.97v-76.29h231.9V305.72z"/>
+</g>
 </svg>

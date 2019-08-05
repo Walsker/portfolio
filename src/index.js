@@ -257,7 +257,7 @@ const Contact = ({id}) => {
           </animated.h2>
         </div>
         <div className='contact_section'>
-          <WalLogo className='contact_subSection logo'/>
+          <WalLogo className='contact_subSection logo unselectable'/>
           <div className='contact_subSection'>
             <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
             <Icon icon={faGithub} link='https://github.com/Walsker'/>
