@@ -91,43 +91,96 @@ const About = (props) => {
   // Ref for the stripe
   const stripeRef = useRef();
 
+  // Words to use in the carousel
+  const adjectives = [
+    'Wal Wal',
+    'Wal Wal',
+    'Wal Wal',
+    'amazing',
+    'smart',
+    'a Leo',
+    'kind',
+    'creative',
+    'black',
+    'charming',
+    'hard-working',
+    'a perfectionist',
+    'friendly'
+
+  ];
+  const componentify = (word) => <h4>I am <span style={{color: 'var(--primaryColor)', fontWeight: 'bold'}}>{word}.</span></h4>;
+
+  const [index, select] = useState(0);
+  useInterval(() => select((index+1) % adjectives.length), 500);
+
   // Animation config for the text
   const contentRef = useRef();
-  const [top, bottom] = useFadeIn(2, contentRef, inView);
-
-  // Animation config for the logos
-  const flipRef = useRef();
+  const contentTrail = useFadeIn(4, contentRef, inView);
 
   // Chain together the animations
-  useChain(inView ? [stripeRef, contentRef, flipRef] : [flipRef, contentRef, stripeRef], [0, 0.35, .6]);
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
 
   return (
-    <Pane inViewRef={ref} {...props}>
-      {/* <Stripe stripeRef={stripeRef} inView={inView} top='165px' size='100px' colour='var(--accentColor'/> */}
-      {/* <animated.div id='about_top' style={top}>
-        <div className='description'>
-          <JavascriptLogo className='logo'/>
-          <h4>Front End Development</h4>
-          Where design meets development. I’ll create an amazing website that can dazzle everyone.
+    <Pane inViewRef={ref}>
+      <div id='about_top'>
+        <Stripe stripeRef={stripeRef} inView={inView} size='300px' colour='var(--white)'/>
+        {componentify(adjectives[index])}
+        <div id='row_section'>
+          <div className='row_box'>
+            Yes, my first name is the same as my last. Here's some filler text. Where design meets development. I’ll create an amazing website that can dazzle everyone.
+            More words will be here that will make me sound even cooler to the reader
+          </div>
+          <div className='row_box'>
+            My goal is success and I exist to empower those around me. Where design meets development. I’ll create an amazing website that can dazzle everyone.
+            Some more filler text, I'll decide what goes in here later. A line to remember me by.
+          </div>
         </div>
-        <div className='description'>
-          <NodeLogo className='logo'/>
-          <h4>Back End Development</h4>
-          This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
-        </div>
-        <div className='description'>
-          <ReactLogo className='logo'/>
-          <h4>Mobile Development</h4>
-          Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
-        </div>
-      </animated.div>
-      <animated.div id='about_bottom' style={bottom}>
+      </div>
+      <animated.div id='about_bottom' style={contentTrail[3]}>
         <div id='logo-pair'>
           <RavensLogo className='logo'/>
           <KandyLogo className='logo'/>
         </div>
         <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
-      </animated.div> */}
+      </animated.div>
+    </Pane>
+  );
+};
+
+const Skills = () => {
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+  // Ref for the stripe
+  const stripeRef = useRef();
+
+  // Animation config for the text
+  const contentRef = useRef();
+  const contentTrail = useFadeIn(3, contentRef, inView);
+
+  // Chain together the animations
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
+
+  return (
+    <Pane inViewRef={ref} style={{minHeight: 'unset', height: 'unset'}}>
+      <div id='skills'>
+        <Stripe stripeRef={stripeRef} inView={inView} size='100px' colour='var(--primaryColor)' style={{marginTop: '80px'}}/>
+        <animated.div className='row_box' style={contentTrail[0]}>
+          <JavascriptLogo className='logo'/>
+          <h4>Front End Development</h4>
+          Where design meets development. I’ll create an amazing website that can dazzle everyone.
+        </animated.div>
+        <animated.div className='row_box' style={contentTrail[1]}>
+          <NodeLogo className='logo'/>
+          <h4>Back End Development</h4>
+          This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
+        </animated.div>
+        <animated.div className='row_box' style={contentTrail[2]}>
+          <ReactLogo className='logo'/>
+          <h4>Mobile Development</h4>
+          Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
+        </animated.div>
+      </div>
     </Pane>
   );
 };
@@ -216,6 +269,7 @@ const App = () => (
     <Navbar/>
     <Landing/>
     <About/>
+    <Skills/>
     {/* <GradeAid id='Projects'/> */}
     {/* <Contact id='Contact'/> */}
   </>
