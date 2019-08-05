@@ -1,6 +1,6 @@
 * {
-  --lightColor: #FAFAFA;
-  --darkColor: #303030;
+  --white: #FAFAFA;
+  --black: #141111;
   --primaryColor: #E23849;
   --accentColor: #F9DC5C;
   --gaTheme: #5921D8;
@@ -19,22 +19,12 @@ body {
   padding: 0;
   /* min-width: 300px; // TODO: decide what the smallest should be when you're done
   min-height: 300px; */
-  background: var(--lightColor);
-  color: var(--darkColor);
+  background: var(--white);
+  color: var(--black);
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
-}
-
-a:link, a:visited {
-  color: var(--accentColor);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-a:link:active, a:visited:active {
-  color: var(--lightColor);
 }
 
 h1 {
@@ -85,11 +75,19 @@ h5 {
 }
 
 .inverted {
-  color: var(--lightColor);
+  color: var(--white);
 }
 
 .bold {
   font-weight: bold
+}
+
+.unselectable {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
 /* Landing pane styles */
@@ -120,15 +118,6 @@ h5 {
   align-items: center;
   margin-left: 5vw;
   margin-right: 5vw;
-}
-
-/* credit: https://www.webfx.com/blog/web-design/disable-text-selection/ */
-.disable-selection, .introGroup {
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
 .introGroup {
@@ -181,7 +170,7 @@ h5 {
 #ga_container {
   display: flex;
   flex: 1;
-  color: var(--lightColor);
+  color: var(--white);
 }
 
 #ga_left, #ga_right {
@@ -211,8 +200,8 @@ h5 {
 
 /* Contact pane styles */
 #contact_container {
-  background-color: var(--darkColor);
-  color: var(--lightColor);
+  background-color: var(--black);
+  color: var(--white);
   text-align: center;
   display: flex;
   flex: 1;

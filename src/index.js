@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {useInView} from 'react-intersection-observer';
 import {useChain, useSpring, animated} from 'react-spring';
-import {Carousel, Navbar, Pane, SocialLogo, Stripe} from './components';
+import {Carousel, Navbar, Pane, SocialIcon, Stripe} from './components';
 import {useFadeIn, useInterval} from './hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from './assets';
 import './index.css';
@@ -14,18 +14,18 @@ const Landing = () => {
 
   const content = (
     <>
-      <div className='introGroup'>
+      <div className='introGroup unselectable'>
         <h3>Hey, I'm</h3>
         <h1>Wal Wal</h1>
       </div>
-      <div className='introGroup'>
+      <div className='introGroup unselectable'>
         <h3 className='inverted'>and I create</h3>
         <Carousel index={carouselIndex}>
           <h2>websites</h2>
           <h2>mobile apps</h2>
         </Carousel>
       </div>
-      <div className='introGroup'>
+      <div className='introGroup unselectable'>
         <h5>Let me make your perfect website.</h5>
       </div>
     </>
@@ -183,9 +183,9 @@ const Contact = ({id}) => {
         <div className='contact_section'>
           <div className='contact_subSection' style={{width: 50, height: 50, backgroundColor: '#CFCFCF', borderRadius: 5}}/>
           <div className='contact_subSection'>
-            <SocialLogo type='LinkedIn' link='https://www.linkedin.com/in/wal-wal'/>
-            <SocialLogo type='GitHub' link='https://github.com/Walsker'/>
-            <SocialLogo type='Twitter' link='https://twitter.com'/>
+            <SocialIcon type='LinkedIn' link='https://www.linkedin.com/in/wal-wal'/>
+            <SocialIcon type='GitHub' link='https://github.com/Walsker'/>
+            <SocialIcon type='Twitter' link='https://twitter.com'/>
           </div>
           <div className='contact_subSection'>
             Made with <span role='img' aria-label='<3'>💛</span> in <span style={{color: 'var(--accentColor)'}}>Ottawa</span>

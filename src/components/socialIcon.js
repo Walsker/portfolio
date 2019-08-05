@@ -6,9 +6,9 @@ import {
   faTwitter,
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
-import {button} from './socialLogo.module.css';
+import {button} from './socialIcon.module.css';
 
-const SocialLogo = ({type, link}) => {
+const SocialIcon = ({type, link, size}) => {
   let icon;
 
   switch (type) {
@@ -27,9 +27,9 @@ const SocialLogo = ({type, link}) => {
 
   return (
     <a className={button} target='_blank' rel='noopener noreferrer external' href={link}>
-      <FontAwesomeIcon icon={icon} size='lg'/>
+      <FontAwesomeIcon icon={icon} size={size ? size : 'lg'}/>
     </a>
   );
 };
 
-export default SocialLogo;
+export default SocialIcon;
