@@ -216,7 +216,7 @@ const Contact = () => {
           </animated.h2>
         </div>
         <div className={styles.contactSection}>
-          <WalLogo className={`${styles.contactSubsection} ${styles.logo} unselectable`}/>
+          <WalLogo className={`${styles.contactSubsection} ${styles.logo} ${styles.myLogo} unselectable`}/>
           <div className={styles.contactSubsection}>
             <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
             <Icon icon={faGithub} link='https://github.com/Walsker'/>

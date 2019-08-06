@@ -186,6 +186,15 @@
   color: var(--white);
 }
 
+.myLogo {
+  transition: 0.05s ease-in;
+}
+
+.myLogo:active {
+  width: 110px;
+  height: 110px;
+}
+
 .icon {
   margin: 0 15px;
 }
