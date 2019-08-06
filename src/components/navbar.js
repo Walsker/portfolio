@@ -48,7 +48,7 @@ const Navbar = () => {
   const [isOpen, toggle] = useState(false);
 
   const {length} = useSpring({
-    config: {clamp: true, friction: 22},
+    config: {clamp: true, mass: 1, tension: 280, friction: 30},
     length: isOpen ? '100%' : '0%',
     from: {length: '0%'}
   });
@@ -70,6 +70,7 @@ const Navbar = () => {
         close={() => {
           toggle(false);
           enableBodyScroll();
+          window.scrollTo(0, 0);
         }}
         style={{
           clipPath: length.interpolate(length => `polygon(0 0px, 100% 0px, 100% ${length}, 0px ${length})`)

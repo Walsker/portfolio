@@ -6,7 +6,7 @@ const Stripe = ({stripeRef, inView, top, size, colour, style}) => {
     ref: stripeRef,
     config: {clamp: true, friction: 22},
     from: {length: 0},
-    to: {length: inView ? window.innerWidth : 0}
+    to: {length: inView ? window.screen.width : 0}
   });
 
   return (
