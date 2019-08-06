@@ -1,0 +1,246 @@
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {useInView} from 'react-intersection-observer';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {
+  faLinkedin,
+  faTwitter,
+  faGithub
+} from '@fortawesome/free-brands-svg-icons';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {useChain, useSpring, animated} from 'react-spring';
+import {Carousel, Pane, Stripe} from 'components';
+import {useFadeIn, useInterval} from 'hooks';
+import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo, WalLogo} from 'assets';
+import styles from './index.module.css';
+
+const Landing = (props) => {
+  // Hooks for the scrolling indicator
+  const [atTop, setAtTop] = useState(window.pageYOffset <= 0);
+  const handleScroll = useCallback(() => setAtTop(window.pageYOffset <= 50));
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
+
+  const scrollIndicator = !atTop ? <div/> : (
+    <div id={styles.scrollIndicator} className='unselectable'>
+      scroll<br/>
+      <FontAwesomeIcon icon={faChevronDown} size='2x'/>
+    </div>
+  );
+
+  // State for moving the carousel
+  const [carouselIndex, selectWindow] = useState(0);
+  useInterval(() => selectWindow((carouselIndex+1) % 2), 5000);
+
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [paneRef, inView] = useInView({threshold: 0.5, triggerOnce: true});
+
+  // Ref for the stripe
+  const stripeRef = useRef();
+
+  // Animation config for the content
+  const contentRef = useRef();
+  const contentTrail = useFadeIn(4, contentRef, inView);
+
+  // Chain together the animations
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [.3, .6]);
+
+  return (
+    <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
+      <Stripe stripeRef={stripeRef} inView={inView} top='235px' size='140px' colour='var(--primaryColor)'/>
+      {scrollIndicator}
+      <div id={styles.landingLeft} className='unselectable'>
+        <animated.div style={contentTrail[0]}>
+          <h3>I create</h3>
+        </animated.div>
+        <animated.div style={contentTrail[1]}>
+          <Carousel index={carouselIndex}>
+            <h1>websites</h1>
+            <h1>mobile apps</h1>
+          </Carousel>
+        </animated.div>
+      </div>
+      <div id={styles.landingRight}>
+        <animated.div id={styles.keepMovingForward} style={contentTrail[3]}>
+          keep moving forward
+        </animated.div>
+        <animated.div id={styles.values} style={contentTrail[3]}>
+          <div className={styles.valueBox}>
+            <span style={{fontWeight: 'bold'}}>my passion</span>
+            <br/>improvement
+          </div>
+          <div className={styles.valueBox}>
+            <span style={{fontWeight: 'bold'}}>the key</span>
+            <br/>collaboration
+          </div>
+          <div className={styles.valueBox}>
+            <span style={{fontWeight: 'bold'}}>my goal</span>
+            <br/>success
+          </div>
+        </animated.div>
+        <animated.div id={styles.shortcuts} style={contentTrail[2]}>
+          <div className={styles.landingButton} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>contact</div>
+        </animated.div>
+      </div>
+    </Pane>
+  );
+};
+
+const About = (props) => {
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+  // Ref for the stripe
+  const stripeRef = useRef();
+
+  // Words to use in the carousel
+  const adjectives = [
+    'Wal Wal',
+    'Wal Wal',
+    'Wal Wal',
+    'amazing',
+    'smart',
+    'a Leo',
+    'kind',
+    'creative',
+    'black',
+    'charming',
+    'hard-working',
+    'a perfectionist',
+    'friendly'
+
+  ];
+  const componentify = (word) => <h4>I am <span style={{color: 'var(--primaryColor)', fontWeight: 'bold'}}>{word}.</span></h4>;
+
+  const [index, select] = useState(0);
+  useInterval(() => select((index+1) % adjectives.length), 500);
+
+  // Animation config for the text
+  const contentRef = useRef();
+  const contentTrail = useFadeIn(4, contentRef, inView);
+
+  // Chain together the animations
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
+
+  return (
+    <Pane inViewRef={ref}>
+      <div id={styles.aboutTop}>
+        <Stripe stripeRef={stripeRef} inView={inView} size='300px' colour='var(--white)'/>
+        {componentify(adjectives[index])}
+        <div id={styles.rowSection}>
+          <div className={styles.rowBox}>
+            Yes, my first name is the same as my last. Here's some filler text. Where design meets development. I’ll create an amazing website that can dazzle everyone.
+            More words will be here that will make me sound even cooler to the reader
+          </div>
+          <div className={styles.rowBox}>
+            My goal is success and I exist to empower those around me. Where design meets development. I’ll create an amazing website that can dazzle everyone.
+            Some more filler text, I'll decide what goes in here later. A line to remember me by.
+          </div>
+        </div>
+      </div>
+      <animated.div id={styles.aboutBottom} style={contentTrail[3]}>
+        <div id={styles.logoPair}>
+          <RavensLogo className={styles.logo}/>
+          <KandyLogo className={styles.logo}/>
+        </div>
+        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
+      </animated.div>
+    </Pane>
+  );
+};
+
+const Skills = () => {
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+  // Ref for the stripe
+  const stripeRef = useRef();
+
+  // Animation config for the text
+  const contentRef = useRef();
+  const contentTrail = useFadeIn(3, contentRef, inView);
+
+  // Chain together the animations
+  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
+
+  return (
+    <Pane inViewRef={ref} style={{minHeight: 'unset', height: 'unset'}}>
+      <div id={styles.skills}>
+        <Stripe stripeRef={stripeRef} inView={inView} top='200px' size='100px' colour='var(--primaryColor)'/>
+        <animated.div className={styles.rowBox} style={contentTrail[0]}>
+          <JavascriptLogo className={styles.logo}/>
+          <h4>Front End Development</h4>
+          Where design meets development. I’ll create an amazing website that can dazzle everyone.
+        </animated.div>
+        <animated.div className={styles.rowBox} style={contentTrail[1]}>
+          <NodeLogo className={styles.logo}/>
+          <h4>Back End Development</h4>
+          This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
+        </animated.div>
+        <animated.div className={styles.rowBox} style={contentTrail[2]}>
+          <ReactLogo className={styles.logo}/>
+          <h4>Mobile Development</h4>
+          Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
+        </animated.div>
+      </div>
+    </Pane>
+  );
+};
+
+const Icon = ({icon, link}) => (
+  <a className={`${styles.link} ${styles.icon}`} target='_blank' rel='noopener noreferrer external' href={link}>
+    <FontAwesomeIcon icon={icon} size='2x'/>
+  </a>
+);
+
+const Contact = () => {
+  // A hook for knowing if an element attached with paneRef is on the screen
+  const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
+
+  // Animation config for the email
+  const fadeIn = useSpring({
+    delay: 1000,
+    from: {opacity: 0, transform: 'translateY(50px)'},
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(25px)'
+  });
+
+  return (
+    <Pane inViewRef={ref}>
+      <div id={styles.contactContainer}>
+        <div className={styles.contactSection}>
+          <h3>Already have an idea in mind? Let’s not wait.</h3>
+          <animated.h2 style={fadeIn}>
+            <a className={styles.link} href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
+          </animated.h2>
+        </div>
+        <div className={styles.contactSection}>
+          <WalLogo className={`${styles.contactSubsection} ${styles.logo} unselectable`}/>
+          <div className={styles.contactSubsection}>
+            <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
+            <Icon icon={faGithub} link='https://github.com/Walsker'/>
+            <Icon icon={faTwitter} link='https://twitter.com'/>
+          </div>
+          <div className={styles.contactSubsection}>
+            Made with <span role='img' aria-label='<3'>❤️</span> in <span style={{color: 'var(--primaryColor)'}}>Ottawa</span>
+          </div>
+          <div className={styles.contactSubsection}>
+            Copyright 2019 © Wal Wal. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </Pane>
+  );  
+};
+
+const Home = () => (
+  <>
+    <Landing/>
+    <About/>
+    <Skills/>
+    <Contact/>
+  </>
+);
+
+export default Home;

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import {animated, useSpring} from 'react-spring';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,10 @@ const Icon = ({icon, link}) => (
   </a>
 );
 
+const PageButton = ({close, path, label}) => (
+  <Link onClick={close} className={styles.pageButton} to={path}>{label}</Link>
+);
+
 const Menu = ({close, style}) => {
   return (
     <animated.div id={styles.menuContainer} style={style}>
@@ -23,14 +28,13 @@ const Menu = ({close, style}) => {
         <div id={styles.menuLogo}>
           W<span id={styles.smallText}>AL</span>
         </div>
-        <div id={styles.exitButton} onClick={() => {enableBodyScroll(); close();}}>
+        <div id={styles.exitButton} onClick={close}>
           <FontAwesomeIcon icon={faTimes} size='2x'/>
         </div>
       </div>
-      <div className={styles.pageButton}>Home</div>
-      <div className={styles.pageButton}>Projects</div>
-      <div className={styles.pageButton}>Resume</div>
-      <div className={styles.pageButton}>Contact</div>
+      <PageButton close={close} path='/' label='Home'/>
+      <PageButton close={close} path='/projects' label='Projects'/>
+      <PageButton close={close} path='/resume' label='Resume'/>
       <div id={styles.socialIcons}>
         <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
         <Icon icon={faGithub} link='https://github.com/Walsker'/>
@@ -55,7 +59,7 @@ const Navbar = () => {
         W<span id={styles.subLogo}>AL</span>
       </div>
       <div 
-        id={styles.menuButton}
+        className={`${styles.menuButton} ${window.location.pathname == '/projects' ? styles.blackButton : ''}`}
         onClick={() => {
           toggle(true);
           disableBodyScroll();
@@ -65,12 +69,12 @@ const Navbar = () => {
       <Menu 
         close={() => {
           toggle(false);
+          enableBodyScroll();
         }}
         style={{
           clipPath: length.interpolate(length => `polygon(0 0px, 100% 0px, 100% ${length}, 0px ${length})`)
         }}
       />
-
     </div>
   );
 };
