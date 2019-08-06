@@ -3,7 +3,7 @@
  */
 import {useTrail} from 'react-spring';
 
-const useFadeIn = (number, ref, inView) => (useTrail(number, {
+const useFadeIn = (number, ref, inView = true) => (useTrail(number, {
   ref: ref,
   from: {opacity: 0, transform: 'translateX(-50px)'},
   opacity: inView ? 1 : 0,

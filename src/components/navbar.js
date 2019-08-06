@@ -59,7 +59,7 @@ const Navbar = () => {
         W<span id={styles.subLogo}>AL</span>
       </div>
       <div 
-        className={`${styles.menuButton} ${window.location.pathname == '/projects' ? styles.blackButton : ''}`}
+        className={`${styles.menuButton} ${window.location.pathname === '/projects' ? styles.blackButton : ''}`}
         onClick={() => {
           toggle(true);
           disableBodyScroll();

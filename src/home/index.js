@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useInView} from 'react-intersection-observer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
@@ -16,7 +16,7 @@ import styles from './index.module.css';
 const Landing = (props) => {
   // Hooks for the scrolling indicator
   const [atTop, setAtTop] = useState(window.pageYOffset <= 0);
-  const handleScroll = useCallback(() => setAtTop(window.pageYOffset <= 50));
+  const handleScroll = () => setAtTop(window.pageYOffset <= 50);
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
