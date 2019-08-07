@@ -173,7 +173,7 @@
   #aboutBio {
     flex-direction: row;
   }
-  
+
   .bioSection {
     margin: 0 25px;
   }
@@ -197,28 +197,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .skillBox {
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   max-width: 405px;
 }
 
 .stripeFE {
-  top: 189px;
+  top: 185px;
   height: 100px;
   background-color: var(--primaryColor);
 }
 
 .stripeBE {
-  top: 574px;
+  top: 565px;
   height: 100px;
   background-color: var(--primaryColor);
 }
 
 .stripeMD {
-  top: 959px;
+  top: 945px;
   height: 100px;
   background-color: var(--primaryColor);
 }
@@ -239,14 +242,14 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
+
   .skillBox {
     width: 300px;
     margin: 20px 1vw
   }
-  
+
   .stripeFE {
-    top: 190px;
+    top: 185px;
   }
 
   .stripeBE {
@@ -254,7 +257,7 @@
   }
 
   .stripeMD {
-    top: 603px;
+    top: 592px;
   }
 
   @media only screen and (min-width: 900px) {
@@ -262,30 +265,23 @@
       align-items: flex-start;
       flex-wrap: nowrap;
     }
-  
+
     .skillBox {
       margin: 20px 1vw;
     }
-  
-  
+
     .stripeBE {
       display: none;
     }
-  
+
     .stripeMD {
       display: none;
-    }  
+    }
   }
 }
 
-
-
-
-
 /* Contact pane styles */
 #contactContainer {
-  background-color: var(--black);
-  color: var(--white);
   text-align: center;
   display: flex;
   flex: 1;
@@ -311,12 +307,8 @@
   text-decoration: none;
 }
 
-.link:hover {
-  color: var(--white);
-}
-
 .myLogo {
-  transition: 0.05s ease-in;
+  transition: 0.01s ease-in;
 }
 
 .myLogo:active {
@@ -326,4 +318,10 @@
 
 .icon {
   margin: 0 15px;
+}
+
+@media only screen and (min-width: 700px) {
+  .link:hover {
+    color: var(--white);
+  }
 }

@@ -221,7 +221,7 @@ const Contact = () => {
     <Pane inViewRef={ref}>
       <div id={styles.contactContainer}>
         <div className={styles.contactSection}>
-          <h3>Already have an idea in mind? Let’s not wait.</h3>
+          <h5>Already have an idea in mind? Let’s not wait.</h5>
           <animated.h2 style={fadeIn}>
             <a className={styles.link} href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
           </animated.h2>
@@ -250,7 +250,7 @@ const Home = () => (
     <Landing/>
     <About/>
     <Skills/>
-    {/* <Contact/> */}
+    <Contact/>
   </>
 );
 

@@ -28,7 +28,7 @@ body {
 
 h1 {
   font-family: 'Roboto Slab', serif;
-  font-size: 110px;
+  font-size: 15vw;
   font-style: normal;
   font-weight: bold;
   margin: 0;
@@ -36,7 +36,7 @@ h1 {
 
 h2 {
   font-family: 'Roboto Slab', serif;
-  font-size: 80px;
+  font-size: 10vw;
   font-style: normal;
   font-weight: bold;
   margin: 0;
@@ -60,10 +60,11 @@ h4 {
 }
 
 h5 {
-  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 32px;
+  font-size: 4vw;
+  line-height: 1;
+  margin-bottom: 0;
 }
 
 #root {
@@ -82,8 +83,16 @@ h5 {
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (min-width: 700px) {
   h1 {
-    font-size: 15vw;
+    font-size: 110px;
+  }
+
+  h2 {
+    font-size: 80px;
+  }
+
+  h5 {
+    font-size: 38px;
   }
 }
