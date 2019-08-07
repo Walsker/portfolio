@@ -1,10 +1,16 @@
 .container {
   height: 120px;
   width: 100%;
+  --carouselStride: 25px;
 }
 
 .window {
   display: inline-block;
   position: absolute;
-  margin-right: 10vw;
+}
+
+@media only screen and (min-width: 700px) {
+  .container {
+    --carouselStride: 100px;
+  }
 }

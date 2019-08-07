@@ -1,7 +1,8 @@
 import React from 'react';
 import {animated, useSpring} from 'react-spring';
+import {container} from './stripe.module.css';
 
-const Stripe = ({stripeRef, inView, top, size, colour, style}) => {
+const Stripe = ({stripeRef, inView, className, ...props}) => {
   const {length} = useSpring({
     ref: stripeRef,
     config: {clamp: true, friction: 22},
@@ -10,9 +11,10 @@ const Stripe = ({stripeRef, inView, top, size, colour, style}) => {
   });
 
   return (
-    <svg width='100%' height={size} style={{position: 'absolute', top, zIndex: -1, ...style}}>
-      <animated.rect x='0' y='0' width={length} height='100%' fill={colour}></animated.rect>
-    </svg>
+    <animated.div
+      className={`${container} ${className}`}
+      style={{width: length, ...props.style}}
+    />
   );
 };
 

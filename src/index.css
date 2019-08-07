@@ -3,6 +3,8 @@
   --black: #111111;
   --primaryColor: #E23849;
   --gaColor: #5921D8;
+  --pageMaxWidth: 1024px;
+  --pageWidth: 90%;
 }
 
 html{
@@ -16,8 +18,6 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  /* min-width: 300px; // TODO: decide what the smallest should be when you're done
-  min-height: 300px; */
   background: var(--black);
   color: var(--white);
   font-family: 'Montserrat', sans-serif;
@@ -71,6 +71,7 @@ h5 {
   display: flex;
   flex: 1;
   flex-direction: column;
+  align-items: center;
 }
 
 .unselectable {
@@ -79,4 +80,10 @@ h5 {
   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+@media only screen and (max-width: 700px) {
+  h1 {
+    font-size: 15vw;
+  }
 }

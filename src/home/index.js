@@ -48,7 +48,7 @@ const Landing = (props) => {
 
   return (
     <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
-      <Stripe stripeRef={stripeRef} inView={inView} top='235px' size='140px' colour='var(--primaryColor)'/>
+      <Stripe className={styles.landingStripe} stripeRef={stripeRef} inView={inView}/>
       {scrollIndicator}
       <div id={styles.landingLeft} className='unselectable'>
         <animated.div style={contentTrail[0]}>
@@ -126,7 +126,7 @@ const About = (props) => {
   return (
     <Pane inViewRef={ref}>
       <div id={styles.aboutTop}>
-        <Stripe stripeRef={stripeRef} inView={inView} size='300px' colour='var(--white)'/>
+        <Stripe className={styles.aboutStripe} stripeRef={stripeRef} inView={inView}/>
         {componentify(adjectives[index])}
         <div id={styles.rowSection}>
           <div className={styles.rowBox}>
@@ -165,9 +165,9 @@ const Skills = () => {
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
 
   return (
-    <Pane inViewRef={ref} style={{minHeight: 'unset', height: 'unset'}}>
+    <Pane inViewRef={ref} style={{minHeight: 'unset', height: 'unset', position: 'relative'}}>
       <div id={styles.skills}>
-        <Stripe stripeRef={stripeRef} inView={inView} top='200px' size='100px' colour='var(--primaryColor)'/>
+        <Stripe className={styles.skillsStripe} stripeRef={stripeRef} inView={inView}/>
         <animated.div className={styles.rowBox} style={contentTrail[0]}>
           <JavascriptLogo className={styles.logo}/>
           <h4>Front End Development</h4>
@@ -238,8 +238,8 @@ const Home = () => (
   <>
     <Landing/>
     <About/>
-    <Skills/>
-    <Contact/>
+    {/* <Skills/> */}
+    {/* <Contact/> */}
   </>
 );
 

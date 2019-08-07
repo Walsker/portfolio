@@ -32,13 +32,17 @@ const Menu = ({close, style}) => {
           <FontAwesomeIcon icon={faTimes} size='2x'/>
         </div>
       </div>
-      <PageButton close={close} path='/' label='Home'/>
-      <PageButton close={close} path='/projects' label='Projects'/>
-      <PageButton close={close} path='/resume' label='Resume'/>
-      <div id={styles.socialIcons}>
-        <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
-        <Icon icon={faGithub} link='https://github.com/Walsker'/>
-        <Icon icon={faTwitter} link='https://twitter.com'/>
+      <div id={styles.menuContent}>
+        <div id={styles.pageButtons}>
+          <PageButton close={close} path='/' label='Home'/>
+          <PageButton close={close} path='/projects' label='Projects'/>
+          <PageButton close={close} path='/resume' label='Resume'/>
+        </div>
+        <div id={styles.socialIcons}>
+          <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
+          <Icon icon={faGithub} link='https://github.com/Walsker'/>
+          <Icon icon={faTwitter} link='https://twitter.com'/>
+        </div>
       </div>
     </animated.div>
   );

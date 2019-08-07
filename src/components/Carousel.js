@@ -7,9 +7,9 @@ const Carousel = ({children, index}) => {
   const childRefs = useRef(children);
 
   const transitions = useTransition(index % children.length, null, {
-    from: {opacity: 0, transform: 'translate(-100px, 0)'},
+    from: {opacity: 0, transform: 'translate(calc(var(--carouselStride) * -1), 0)'},
     enter: {opacity: 1, transform: 'translate(0, 0)'},
-    leave: {opacity: 0, transform: 'translate(100px, 0)'}
+    leave: {opacity: 0, transform: 'translate(var(--carouselStride), 0)'}
   });
 
   if (childRefs.current[index % children.length].props.style && childRefs.current[index % children.length].props.style) {
