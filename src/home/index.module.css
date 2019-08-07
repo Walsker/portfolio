@@ -40,7 +40,7 @@
 
 #scrollIndicator {
   position: fixed;
-  top: 90vh;
+  top: 85vh;
   text-align: center;
   opacity: 0;
   animation: hover 4s ease 5s infinite;
@@ -57,7 +57,6 @@
   display: flex;
   flex-direction: column;
   text-align: right;
-  margin-right: -20px;
 }
 
 #shortcuts {
@@ -76,6 +75,7 @@
 
 .valueBox {
   padding: 10px 20px;
+  margin-right: -20px;
   white-space: nowrap;
 }
 
@@ -127,29 +127,26 @@
 #aboutTop, #aboutBottom {
   display: flex;
   height: 100%;
-  justify-content: center;
   text-align: center;
-  margin: 0 15vw;
 }
 
 #aboutTop {
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 15vw;
   align-items: center;
   color: var(--black);
 }
 
-#rowSection {
+#aboutBio {
   display: flex;
-  flex-direction: row;
-  margin: 25px 0;
+  flex-direction: column;
 }
 
 #aboutBottom{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-bottom: 5vh;
 }
 
@@ -158,17 +155,39 @@
   flex-direction: row;
 }
 
-.rowBox {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 2vw;
+.bioSection {
+  margin: 0 0 4vw 0;
 }
 
 .aboutStripe {
-  height: 300px;
+  top: 16vw;
+  height: calc(610px - 40vw);
   background-color: var(--white);
+}
+
+@media only screen and (min-width: 700px) {
+  #aboutTop {
+    padding-top: 100px;
+  }
+
+  #aboutBio {
+    flex-direction: row;
+  }
+  
+  .bioSection {
+    margin: 0 25px;
+  }
+
+  .aboutStripe {
+    top: 100px;
+    height: calc(475px - 20vw);
+  }
+
+  @media only screen and (min-width: 1150px) {
+    .aboutStripe {
+      height: 250px
+    }
+  }
 }
 
 /* Skills pane styles */

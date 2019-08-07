@@ -62,10 +62,10 @@ const Landing = (props) => {
         </animated.div>
       </div>
       <div id={styles.landingRight}>
-        <animated.div id={styles.keepMovingForward} style={contentTrail[3]}>
+        <animated.div id={styles.keepMovingForward} style={contentTrail[2]}>
           keep moving forward
         </animated.div>
-        <animated.div id={styles.values} style={contentTrail[3]}>
+        <animated.div id={styles.values} style={contentTrail[2]}>
           <div className={styles.valueBox}>
             <span style={{fontWeight: 'bold'}}>my passion</span>
             <br/>improvement
@@ -79,7 +79,7 @@ const Landing = (props) => {
             <br/>success
           </div>
         </animated.div>
-        <animated.div id={styles.shortcuts} style={contentTrail[2]}>
+        <animated.div id={styles.shortcuts} style={contentTrail[3]}>
           <div className={styles.landingButton} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>contact</div>
         </animated.div>
       </div>
@@ -99,19 +99,21 @@ const About = (props) => {
     'Wal Wal',
     'Wal Wal',
     'Wal Wal',
+    'Wal Wal',
     'amazing',
+    'passionate',
     'smart',
-    'a Leo',
-    'kind',
+    'a bass singer',
     'creative',
-    'black',
-    'charming',
     'hard-working',
-    'a perfectionist',
-    'friendly'
-
+    'a Leo',
+    'friendly',
+    'a clarinetist',
+    'a deep sleeper',
+    'motivated'
   ];
-  const componentify = (word) => <h4>I am <span style={{color: 'var(--primaryColor)', fontWeight: 'bold'}}>{word}.</span></h4>;
+  const highlightStyle = {color: inView ? 'var(--primaryColor)' : 'var(--black)', transition: '0.75s'};
+  const componentify = (word) => <h4>I am <span style={highlightStyle}>{word}.</span></h4>;
 
   const [index, select] = useState(0);
   useInterval(() => select((index+1) % adjectives.length), 500);
@@ -123,19 +125,24 @@ const About = (props) => {
   // Chain together the animations
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
 
+  // A method for highlighting text
+  const highlight = text => <span style={highlightStyle}>{text}</span>;
+
   return (
     <Pane inViewRef={ref}>
       <div id={styles.aboutTop}>
         <Stripe className={styles.aboutStripe} stripeRef={stripeRef} inView={inView}/>
         {componentify(adjectives[index])}
-        <div id={styles.rowSection}>
-          <div className={styles.rowBox}>
-            Yes, my first name is the same as my last. Here's some filler text. Where design meets development. I’ll create an amazing website that can dazzle everyone.
-            More words will be here that will make me sound even cooler to the reader
+        <div id={styles.aboutBio}>
+          <div className={styles.bioSection}>
+            Yes, my first name is the same as my last. Based in {highlight('Ottawa, Canada')}, I'm an up-and-coming freelance {highlight('software developer')} who is ready to begin working 
+            with those who want to seriously up their game; especially with {highlight('local artists or businesses')}.
           </div>
-          <div className={styles.rowBox}>
-            My goal is success and I exist to empower those around me. Where design meets development. I’ll create an amazing website that can dazzle everyone.
-            Some more filler text, I'll decide what goes in here later. A line to remember me by.
+          <div className={styles.bioSection}>
+            My goal is {highlight('success')} and my passion is empowering those around me. Although 
+            I am also an extremely productive individual, I thrive in {highlight('collaborative environments')}.{' '}
+            <span style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>Tell me about yourself</span>
+            , and perhaps we can create something amazing together!
           </div>
         </div>
       </div>
@@ -223,7 +230,7 @@ const Contact = () => {
             <Icon icon={faTwitter} link='https://twitter.com'/>
           </div>
           <div className={styles.contactSubsection}>
-            Made with <span role='img' aria-label='<3'>❤️</span> in <span style={{color: 'var(--primaryColor)'}}>Ottawa</span>
+            Created with <span role='img' aria-label='<3'>❤️</span> by <span style={{color: 'var(--primaryColor)'}}>Wal Wal</span>
           </div>
           <div className={styles.contactSubsection}>
             Copyright 2019 © Wal Wal. All rights reserved.
