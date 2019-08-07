@@ -162,32 +162,36 @@ const Skills = () => {
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
   // Ref for the stripe
-  const stripeRef = useRef();
+  const stripeRefFE = useRef();
+  const stripeRefBE = useRef();
+  const stripeRefMD = useRef();
 
   // Animation config for the text
   const contentRef = useRef();
   const contentTrail = useFadeIn(3, contentRef, inView);
 
   // Chain together the animations
-  useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
+  useChain(inView ? [stripeRefFE, stripeRefBE, stripeRefMD, contentRef] : [contentRef, stripeRefMD, stripeRefBE, stripeRefFE], [0, 0.1, 0.2, 0.4]);
 
   return (
-    <Pane inViewRef={ref} style={{minHeight: 'unset', height: 'unset', position: 'relative'}}>
+    <Pane inViewRef={ref} style={{minHeight: 'unset', maxHeight: 'unset', height: 'unset'}}>
       <div id={styles.skills}>
-        <Stripe className={styles.skillsStripe} stripeRef={stripeRef} inView={inView}/>
-        <animated.div className={styles.rowBox} style={contentTrail[0]}>
+        <Stripe className={styles.stripeFE} stripeRef={stripeRefFE} inView={inView}/>
+        <Stripe className={styles.stripeBE} stripeRef={stripeRefBE} inView={inView}/>
+        <Stripe className={styles.stripeMD} stripeRef={stripeRefMD} inView={inView}/>
+        <animated.div className={styles.skillBox} style={contentTrail[0]}>
           <JavascriptLogo className={styles.logo}/>
-          <h4>Front End Development</h4>
+          <h4>Front End<br/>Development</h4>
           Where design meets development. I’ll create an amazing website that can dazzle everyone.
         </animated.div>
-        <animated.div className={styles.rowBox} style={contentTrail[1]}>
+        <animated.div className={styles.skillBox} style={contentTrail[1]}>
           <NodeLogo className={styles.logo}/>
-          <h4>Back End Development</h4>
+          <h4>Back End<br/>Development</h4>
           This is where my problem solving shines. I’ll augment your website to take on whatever tasks it needs.
         </animated.div>
-        <animated.div className={styles.rowBox} style={contentTrail[2]}>
+        <animated.div className={styles.skillBox} style={contentTrail[2]}>
           <ReactLogo className={styles.logo}/>
-          <h4>Mobile Development</h4>
+          <h4>Mobile<br/>Development</h4>
           Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
         </animated.div>
       </div>
@@ -245,7 +249,7 @@ const Home = () => (
   <>
     <Landing/>
     <About/>
-    {/* <Skills/> */}
+    <Skills/>
     {/* <Contact/> */}
   </>
 );

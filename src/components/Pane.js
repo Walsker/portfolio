@@ -8,8 +8,8 @@ import {container, wrapper} from './pane.module.css';
 //   </div>
 // );
 const Pane = ({children, inViewRef, style, ...rest}) => (
-  <div ref={inViewRef} className={container} style={style} {...rest}>
-    <div className={wrapper}>
+  <div ref={inViewRef} className={container} {...rest}>
+    <div className={wrapper} style={style}>
       {children}
     </div>
   </div>

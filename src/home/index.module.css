@@ -15,7 +15,7 @@
   align-items: flex-end;
 }
 
-@keyframes hover {
+@keyframes floatNFade {
   0% {
     opacity: 0;
     transform: translateY(0px);
@@ -43,7 +43,7 @@
   top: 85vh;
   text-align: center;
   opacity: 0;
-  animation: hover 4s ease 5s infinite;
+  animation: floatNFade 4s ease 5s infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,17 +193,32 @@
 /* Skills pane styles */
 #skills {
   display: flex;
-  height: 100%;
+  flex: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 15vw;
-  margin-top: 5vh;
-  margin-bottom: 10vh;
 }
 
-.skillsStripe {
-  top: 200px;
+.skillBox {
+  margin: 20px 0;
+  max-width: 405px;
+}
+
+.stripeFE {
+  top: 189px;
+  height: 100px;
+  background-color: var(--primaryColor);
+}
+
+.stripeBE {
+  top: 574px;
+  height: 100px;
+  background-color: var(--primaryColor);
+}
+
+.stripeMD {
+  top: 959px;
   height: 100px;
   background-color: var(--primaryColor);
 }
@@ -218,6 +233,54 @@
   width: 100px;
   height: 100px;
 }
+
+@media only screen and (min-width: 700px) {
+  #skills {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .skillBox {
+    width: 300px;
+    margin: 20px 1vw
+  }
+  
+  .stripeFE {
+    top: 190px;
+  }
+
+  .stripeBE {
+    display: none;
+  }
+
+  .stripeMD {
+    top: 603px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    #skills {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+  
+    .skillBox {
+      margin: 20px 1vw;
+    }
+  
+  
+    .stripeBE {
+      display: none;
+    }
+  
+    .stripeMD {
+      display: none;
+    }  
+  }
+}
+
+
+
+
 
 /* Contact pane styles */
 #contactContainer {
