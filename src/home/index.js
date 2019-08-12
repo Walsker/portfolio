@@ -108,7 +108,6 @@ const About = (props) => {
     'hard-working',
     'a Leo',
     'friendly',
-    'a clarinetist',
     'a deep sleeper',
     'motivated'
   ];

@@ -1,11 +1,12 @@
 import React, {useRef} from 'react';
 import {useInView} from 'react-intersection-observer';
 import {animated, config, interpolate, useChain, useSpring} from 'react-spring';
+import {GradeAidLogo} from 'assets';
 import {Pane} from 'components';
 import {useFadeIn} from 'hooks';
 import styles from './index.module.css';
 
-const Project = ({title, link, ...props}) => {
+const Project = ({title, subtitle, ...props}) => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.4, triggerOnce: true});
 
@@ -28,9 +29,9 @@ const Project = ({title, link, ...props}) => {
   return (
     <Pane inViewRef={ref}>
       <div className={styles.project}>
-        <div className={styles.demoWrapper}>
+        <div className={styles.demo}>
           <animated.div
-            className={styles.demo}
+            className={`${styles.demoWrapper} unselectable`}
             style={{
               clipPath: interpolate([a, b], (a, b) => 
                 `polygon(100% ${b}, 100% 100%, ${b} 100%, 0 ${a}, 0 0, ${a} 0)`
@@ -40,9 +41,9 @@ const Project = ({title, link, ...props}) => {
             {props.children}
           </animated.div>
         </div>
-        <animated.div id={styles.title} style={titleFade}>
+        <animated.div className={styles.title} style={titleFade}>
           <h1>{title}</h1>
-          {link}
+          {subtitle}
         </animated.div>
       </div>
     </Pane>
@@ -52,11 +53,18 @@ const Project = ({title, link, ...props}) => {
 const Projects = () => {
   return (
     <div id={styles.container}>
-      <Project title='Portfolio' link='https://walcreates.ca'>
-        <div style={{width: '90vw', height: '60vh', backgroundColor: 'var(--primaryColor)'}}/>
+      <Project title='Portfolio' subtitle="You're already here!">
+        <a href='/'>
+          <div className={styles.portfolioDemo}>
+            wal<br/>creates<br/>.ca
+          </div>
+        </a>
       </Project>
-      <Project title='Grade Aid' link='https://gradeaid.walcreates.ca'>
-        <div style={{width: '90vw', height: '60vh', backgroundColor: 'var(--gaColor)'}}/>
+      <Project title='Grade Aid' subtitle='Coming soon!'>
+        <div className={`${styles.gaDemo} ${styles.deactivatedDemo}`}>
+          <GradeAidLogo id={styles.gaLogo}/>
+          Organize your assignments and take control of your grades.
+        </div>
       </Project>
     </div>
   );

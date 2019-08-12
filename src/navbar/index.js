@@ -9,7 +9,7 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
-import styles from './navbar.module.css';
+import styles from './index.module.css';
 
 const Icon = ({icon, link}) => (
   <a className={styles.icon} target='_blank' rel='noopener noreferrer external' href={link}>
@@ -34,9 +34,9 @@ const Menu = ({close, style}) => {
       </div>
       <div id={styles.menuContent}>
         <div id={styles.pageButtons}>
-          <PageButton close={close} path='/' label='Home'/>
-          <PageButton close={close} path='/projects' label='Projects'/>
-          <PageButton close={close} path='/resume' label='Resume'/>
+          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/' label='Home'/>
+          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/projects' label='Projects'/>
+          {/* <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/resume' label='Resume'/> */}
         </div>
         <div id={styles.socialIcons}>
           <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
@@ -68,13 +68,12 @@ const Navbar = () => {
           toggle(true);
           disableBodyScroll();
         }}>
-        <FontAwesomeIcon icon={faBars} size='2x'/>
+        <FontAwesomeIcon icon={faBars} size='2x' style={{stroke: 'blue', strokeWidth: '2px'}}/>
       </div>
       <Menu 
         close={() => {
           toggle(false);
           enableBodyScroll();
-          window.scrollTo(0, 0);
         }}
         style={{
           clipPath: length.interpolate(length => `polygon(0 0px, 100% 0px, 100% ${length}, 0px ${length})`)
@@ -83,4 +82,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
