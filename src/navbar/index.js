@@ -51,10 +51,10 @@ const Menu = ({close, style}) => {
 const Navbar = () => {
   const [isOpen, toggle] = useState(false);
 
-  const {length} = useSpring({
+  const slideIn = useSpring({
     config: {clamp: true, mass: 1, tension: 280, friction: 30},
-    length: isOpen ? '100%' : '0%',
-    from: {length: '0%'}
+    height: isOpen ? '100%' : '0%',
+    from: {height: '0%'}
   });
 
   return (
@@ -75,9 +75,7 @@ const Navbar = () => {
           toggle(false);
           enableBodyScroll();
         }}
-        style={{
-          clipPath: length.interpolate(length => `polygon(0 0px, 100% 0px, 100% ${length}, 0px ${length})`)
-        }}
+        style={slideIn}
       />
     </div>
   );

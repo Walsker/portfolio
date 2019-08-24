@@ -66,6 +66,7 @@
 #menuContainer {
   z-index: 1;
   position: fixed;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,6 +84,7 @@
   width: var(--pageWidth);
   max-width: var(--pageMaxWidth);
   height: 60px;
+  min-height: 60px;
   padding-top: 5px;
   padding-left: 8px;
 }
@@ -92,12 +94,14 @@
   flex: 1;
   width: var(--pageWidth);
   max-width: var(--pageMaxWidth);
+  min-height: calc(100vh - 60px);
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 #menuLogo {
+  height: 60px;
   font-family: 'Roboto Slab', serif;
   font-weight: bold;
   font-size: 40px;
@@ -111,6 +115,7 @@
 }
 
 #exitButton {
+  height: 60px;
   display: flex;
   padding-right: 11px;
   align-items: center;
