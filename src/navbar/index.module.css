@@ -16,6 +16,7 @@
   font-size: 40px;
   padding: 0 8px;
   clip-path: polygon(0 0, 55% 0, 55% 100%, 0% 100%);
+  color: var(--white);
   transition: clip-path 0.1s ease-in;
 
   -moz-user-select: none; /* Firefox */

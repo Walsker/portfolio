@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import {Helmet} from 'react-helmet';
 import {useInView} from 'react-intersection-observer';
 import {animated, config, interpolate, useChain, useSpring} from 'react-spring';
 import {GradeAidLogo} from 'assets';
@@ -28,6 +29,10 @@ const Project = ({title, subtitle, ...props}) => {
 
   return (
     <Pane inViewRef={ref}>
+      <Helmet>
+        <title>Wal Wal | Projects</title>
+        <meta name='description' content='Your neighbourhood freelance developer. Take a look at my projects!'/>
+      </Helmet>
       <div className={styles.project}>
         <div className={styles.demo}>
           <animated.div

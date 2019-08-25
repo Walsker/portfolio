@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {HashLink as Link} from 'react-router-hash-link';
 import {useInView} from 'react-intersection-observer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
@@ -80,7 +81,7 @@ const Landing = (props) => {
           </div>
         </animated.div>
         <animated.div id={styles.shortcuts} style={contentTrail[3]}>
-          <div className={styles.landingButton} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>contact</div>
+          <Link smooth to='/#contact' className={styles.landingButton}>contact</Link>
         </animated.div>
       </div>
     </Pane>
@@ -216,7 +217,7 @@ const Contact = () => {
   });
 
   return (
-    <Pane inViewRef={ref}>
+    <Pane inViewRef={ref} id='contact'>
       <div id={styles.contactContainer}>
         <div className={styles.contactSection}>
           <h5>Already have an idea in mind? Let’s not wait.</h5>

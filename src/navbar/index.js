@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import {HashLink} from 'react-router-hash-link';
 import {animated, useSpring} from 'react-spring';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -57,11 +58,19 @@ const Navbar = () => {
     from: {height: '0%'}
   });
 
+  const logo = window.location.pathname === '/' ? (
+    <div id={styles.logo} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
+      W<span id={styles.subLogo}>AL</span>
+    </div>
+  ) : (
+    <a id={styles.logo} href='/'>
+      W<span id={styles.subLogo}>AL</span>
+    </a>
+  );
+
   return (
     <div id={styles.container}>
-      <div id={styles.logo} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
-        W<span id={styles.subLogo}>AL</span>
-      </div>
+      {logo}
       <div 
         className={`${styles.menuButton} ${window.location.pathname === '/projects' ? styles.blackButton : ''}`}
         onClick={() => {
