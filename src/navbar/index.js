@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {HashLink} from 'react-router-hash-link';
 import {animated, useSpring} from 'react-spring';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faTimes, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {
   faLinkedin,
-  faTwitter,
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
@@ -42,7 +40,7 @@ const Menu = ({close, style}) => {
         <div id={styles.socialIcons}>
           <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
           <Icon icon={faGithub} link='https://github.com/Walsker'/>
-          <Icon icon={faTwitter} link='https://twitter.com'/>
+          <Icon icon={faEnvelope} link='mailto:me@walcreates.ca'/>
         </div>
       </div>
     </animated.div>

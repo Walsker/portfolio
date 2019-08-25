@@ -4,10 +4,9 @@ import {useInView} from 'react-intersection-observer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faLinkedin,
-  faTwitter,
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {faChevronDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
 import {Carousel, Pane, Stripe} from 'components';
 import {useFadeIn, useInterval} from 'hooks';
@@ -230,7 +229,7 @@ const Contact = () => {
           <div className={styles.contactSubsection}>
             <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
             <Icon icon={faGithub} link='https://github.com/Walsker'/>
-            <Icon icon={faTwitter} link='https://twitter.com'/>
+            <Icon icon={faEnvelope} link='mailto:me@walcreates.ca'/>
           </div>
           <div className={styles.contactSubsection}>
             Created with <span role='img' aria-label='<3'>❤️</span> by <span style={{color: 'var(--primaryColor)'}}>Wal Wal</span>
