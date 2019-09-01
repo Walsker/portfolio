@@ -47,7 +47,7 @@ const Menu = ({close, style}) => {
   );
 };
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, toggle] = useState(false);
 
   const slideIn = useSpring({
@@ -70,12 +70,12 @@ const Navbar = () => {
     <div id={styles.container}>
       {logo}
       <div 
-        className={`${styles.menuButton} ${window.location.pathname === '/projects' ? styles.blackButton : ''}`}
+        className={`${styles.menuButton} ${props.flipColor ? styles.blackButton : ''}`}
         onClick={() => {
           toggle(true);
           disableBodyScroll();
         }}>
-        <FontAwesomeIcon icon={faBars} size='2x' style={{stroke: 'blue', strokeWidth: '2px'}}/>
+        <FontAwesomeIcon icon={faBars} size='2x'/>
       </div>
       <Menu 
         close={() => {

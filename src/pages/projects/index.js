@@ -29,10 +29,6 @@ const Project = ({title, subtitle, ...props}) => {
 
   return (
     <Pane inViewRef={ref}>
-      <Helmet>
-        <title>Wal Wal | Projects</title>
-        <meta name='description' content='Your neighbourhood freelance developer. Take a look at my projects!'/>
-      </Helmet>
       <div className={styles.project}>
         <div className={styles.demo}>
           <animated.div
@@ -58,6 +54,10 @@ const Project = ({title, subtitle, ...props}) => {
 const Projects = () => {
   return (
     <div id={styles.container}>
+      <Helmet>
+        <title>Wal Wal | Projects</title>
+        <meta name='description' content='Your neighbourhood freelance developer. Take a look at my projects!'/>
+      </Helmet>
       <Project title='Portfolio' subtitle="You're already here!">
         <a href='/'>
           <div className={styles.portfolioDemo}>

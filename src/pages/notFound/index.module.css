@@ -1,0 +1,19 @@
+#container {
+  display: flex;
+  height: 100vh;
+  /* margin: 20vh 5vw; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#gif {
+  width: 80vw;
+  margin: 5vh 0;
+}
+
+@media only screen and (min-width: 700px) {
+  #gif {
+    width: unset
+  }
+}

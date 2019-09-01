@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "1.1",
   "private": true,
+  "homepage": "https://walcreates.ca",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
@@ -21,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-gh": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": "react-app"

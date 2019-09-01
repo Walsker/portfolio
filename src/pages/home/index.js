@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {Helmet} from 'react-helmet';
 import {HashLink as Link} from 'react-router-hash-link';
 import {useInView} from 'react-intersection-observer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -13,7 +14,7 @@ import {useFadeIn, useInterval} from 'hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo, WalLogo} from 'assets';
 import styles from './index.module.css';
 
-const Landing = (props) => {
+const Landing = () => {
   // Hooks for the scrolling indicator
   const [atTop, setAtTop] = useState(window.pageYOffset <= 0);
   const handleScroll = () => setAtTop(window.pageYOffset <= 50);
@@ -87,7 +88,7 @@ const Landing = (props) => {
   );
 };
 
-const About = (props) => {
+const About = () => {
   // A hook for knowing if an element attached with paneRef is on the screen
   const [ref, inView] = useInView({threshold: 0.35, triggerOnce: true});
 
@@ -245,6 +246,9 @@ const Contact = () => {
 
 const Home = () => (
   <>
+    <Helmet>
+      <title>Wal Wal</title>
+    </Helmet>
     <Landing/>
     <About/>
     <Skills/>
