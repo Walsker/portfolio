@@ -40,7 +40,7 @@ const Menu = ({close, style}) => {
         <div id={styles.socialIcons}>
           <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
           <Icon icon={faGithub} link='https://github.com/Walsker'/>
-          <Icon icon={faEnvelope} link='mailto:me@walcreates.ca'/>
+          <Icon icon={faEnvelope} link='mailto:wal@walcreates.ca'/>
         </div>
       </div>
     </animated.div>

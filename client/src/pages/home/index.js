@@ -222,7 +222,7 @@ const Contact = () => {
         <div className={styles.contactSection}>
           <h5>Already have an idea in mind? Let’s not wait.</h5>
           <animated.h2 style={fadeIn}>
-            <a className={styles.link} href="mailto:me@walcreates.ca" target="_top">me@walcreates.ca</a>
+            <a className={styles.link} href="mailto:wal@walcreates.ca" target="_top">wal@walcreates.ca</a>
           </animated.h2>
         </div>
         <div className={styles.contactSection}>
@@ -230,7 +230,7 @@ const Contact = () => {
           <div className={styles.contactSubsection}>
             <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
             <Icon icon={faGithub} link='https://github.com/Walsker'/>
-            <Icon icon={faEnvelope} link='mailto:me@walcreates.ca'/>
+            <Icon icon={faEnvelope} link='mailto:wal@walcreates.ca'/>
           </div>
           <div className={styles.contactSubsection}>
             Created with <span role='img' aria-label='<3'>❤️</span> by <span style={{color: 'var(--primaryColor)'}}>Wal Wal</span>
