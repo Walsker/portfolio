@@ -11,11 +11,26 @@ const Indicator = ({index, numPages}) => {
   );
 };
 
-const Navigation = ({prev, next}) => {
+const Navigation = ({index, numPages, selectPage}) => {
+  const disableLeft = index == 0 ? {style: {cursor: 'default', color: 'var(--white)'}} : {};
+  const disableRight = index == (numPages-1) ? {style: {cursor: 'default', color: 'var(--white)'}} : {};
+
   return (
     <div className={styles.footer}>
-      <FontAwesomeIcon className={styles.arrow} onClick={prev} icon={faArrowLeft} size='2x'/>
-      <FontAwesomeIcon className={styles.arrow} onClick={next} icon={faArrowRight} size='2x'/>
+      <FontAwesomeIcon
+        className={styles.arrow}
+        onClick={() => selectPage((index-1) < 0 ? 0 : (index-1))}
+        icon={faArrowLeft}
+        size='2x'
+        {...disableLeft}
+      />
+      <FontAwesomeIcon
+        className={styles.arrow}
+        onClick={() => selectPage((index+1) >= numPages ? (numPages-1) : (index+1))}
+        icon={faArrowRight}
+        size='2x'
+        {...disableRight}
+      />
     </div>
   );
 };
@@ -28,9 +43,10 @@ const Window = ({children, ...rest}) => {
     <div className={styles.window} {...rest}>
       <Indicator index={index} numPages={children.length}/>
       {children[index]}
-      <Navigation 
-        prev={() => selectPage((index-1) < 0 ? (children.length-1) : (index-1))}
-        next={() => selectPage((index+1) % children.length)}
+      <Navigation
+        index={index}
+        numPages={children.length}
+        selectPage={selectPage}
       />
     </div>
   );

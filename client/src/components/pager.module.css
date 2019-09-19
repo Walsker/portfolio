@@ -16,6 +16,7 @@
 }
 
 .header, .footer {
+  position: fixed;
   display: flex;
   width: 90%;
   max-width: 1024px;
@@ -28,7 +29,6 @@
 }
 
 .footer {
-  position: absolute;
   justify-content: flex-end; 
   bottom: 0;
 }
