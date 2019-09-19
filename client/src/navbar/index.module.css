@@ -159,10 +159,6 @@
   .pageButton {
     font-size: 15vh;
   }
-  
-  .pageButton:hover {
-    color: var(--white);
-  }
 
   .icon:hover, .icon:active {
     color: var(--white);

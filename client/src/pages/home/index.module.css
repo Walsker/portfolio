@@ -62,7 +62,7 @@
 #shortcuts {
   display: flex;
   flex-direction: row;
-  margin: 0 -20px 5vh 0;
+  margin: 0 0 5vh 0;
 }
 
 #keepMovingForward {
@@ -74,8 +74,7 @@
 }
 
 .valueBox {
-  padding: 10px 20px;
-  margin-right: -20px;
+  padding: 10px 0 0 20px;
   white-space: nowrap;
 }
 
@@ -87,15 +86,9 @@
 
 .landingButton {
   font-size: 28px;
-  text-decoration: underline;
-  padding: 0 20px;
+  /* margin: 0 20px; */
   cursor: pointer;
   color: var(--primaryColor);
-}
-
-.landingButton:active{
-  color: var(--primaryColor);
-  text-decoration: underline;
 }
 
 @media only screen and (min-width: 700px) {
@@ -117,8 +110,7 @@
   }
 
   .landingButton:hover, .landingButton:focus {
-    color: var(--primaryColor);
-    text-decoration: underline;
+    /* color: var(--primaryColor); */
     transition: 0.1s ease-in;
   }
 }
@@ -321,7 +313,7 @@
 }
 
 @media only screen and (min-width: 700px) {
-  .link:hover {
+  .icon:hover, .icon:active {
     color: var(--white);
   }
 }

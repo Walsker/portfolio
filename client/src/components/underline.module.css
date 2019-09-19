@@ -1,0 +1,9 @@
+.container {
+  position: relative;
+  display: inline;
+}
+
+.underline {
+  height: 14px;
+  bottom: 0;
+}

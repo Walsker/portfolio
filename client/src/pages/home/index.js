@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {faChevronDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
-import {Carousel, Pane, Stripe} from 'components';
+import {Carousel, Pane, Stripe, Underline} from 'components';
 import {useFadeIn, useInterval} from 'hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo, WalLogo} from 'assets';
 import styles from './index.module.css';
@@ -49,7 +49,7 @@ const Landing = () => {
 
   return (
     <Pane inViewRef={paneRef} style={{flexDirection: 'row'}}>
-      <Stripe className={styles.landingStripe} stripeRef={stripeRef} inView={inView}/>
+      <Stripe className={styles.landingStripe} stripeRef={stripeRef} isActive={inView} width={window.screen.width}/>
       {scrollIndicator}
       <div id={styles.landingLeft} className='unselectable'>
         <animated.div style={contentTrail[0]}>
@@ -81,7 +81,9 @@ const Landing = () => {
           </div>
         </animated.div>
         <animated.div id={styles.shortcuts} style={contentTrail[3]}>
-          <Link smooth to='/#contact' className={styles.landingButton}>contact</Link>
+          <Underline.Hover>
+            <Link smooth to='/#contact' className={styles.landingButton}>contact</Link>
+          </Underline.Hover>
         </animated.div>
       </div>
     </Pane>
@@ -95,56 +97,75 @@ const About = () => {
   // Ref for the stripe
   const stripeRef = useRef();
 
-  // Words to use in the carousel
-  const adjectives = [
-    'Wal Wal',
-    'Wal Wal',
-    'Wal Wal',
-    'Wal Wal',
-    'passionate',
-    'smart',
-    'a bass vocalist',
-    'creative',
-    'hard-working',
-    'a Leo',
-    'friendly',
-    'a deep sleeper',
-    'motivated'
-  ];
-  const highlightStyle = {color: inView ? 'var(--primaryColor)' : 'var(--black)', transition: '0.75s'};
-  const componentify = (word) => <h4>I am <span style={highlightStyle}>{word}.</span></h4>;
+  const Adjective = () => {
+    // Words to use in the carousel
+    const adjectives = [
+      'Wal Wal',
+      'Wal Wal',
+      'Wal Wal',
+      'Wal Wal',
+      'passionate',
+      'smart',
+      'a bass vocalist',
+      'creative',
+      'hard-working',
+      'a Leo',
+      'friendly',
+      'a deep sleeper',
+      'motivated'
+    ];
+    
+    const componentify = (word) => <h4>I am <span style={{color: inView ? 'var(--primaryColor)' : 'var(--black)', transition: '0.75s', whiteSpace: 'nowrap'}}>{word}</span>.</h4>;
+    const [index, select] = useState(0);
+    useInterval(() => select((index+1) % adjectives.length), 500);
 
-  const [index, select] = useState(0);
-  useInterval(() => select((index+1) % adjectives.length), 500);
+    return componentify(adjectives[index]);
+  };
 
   // Animation config for the text
   const contentRef = useRef();
   const contentTrail = useFadeIn(4, contentRef, inView);
-
+  const highlightRefs = [];
+  
   // Chain together the animations
   useChain(inView ? [stripeRef, contentRef] : [contentRef, stripeRef], [0, 0.35]);
+  
+  // A HOC for highlighting text
+  const Highlight = ({children}) => {
+    const underlineRef = useRef();
+    highlightRefs.push(underlineRef);
 
-  // A method for highlighting text
-  const highlight = text => <span style={highlightStyle}>{text}</span>;
+    return (
+      <Underline.Animated underlineRef={underlineRef} inView={inView}>
+        <span style={{color: 'var(--black)', whiteSpace: 'nowrap'}}>{children}</span>
+      </Underline.Animated>
+    );
+  };
+
+  useChain(inView ? highlightRefs : []);
 
   return (
     <Pane inViewRef={ref}>
-      <div id={styles.aboutTop}>
-        <Stripe className={styles.aboutStripe} stripeRef={stripeRef} inView={inView}/>
-        {componentify(adjectives[index])}
+      <Stripe className={styles.aboutStripe} stripeRef={stripeRef} isActive={inView} width={window.screen.width}/>
+      <animated.div id={styles.aboutTop} style={contentTrail[0]}>
+        <Adjective/>
         <div id={styles.aboutBio}>
           <div className={styles.bioSection}>
-            Yes, my first name is the same as my last. Based in {highlight('Ottawa, Canada')}, I'm an up-and-coming freelance {highlight('software developer')} who is ready to begin working 
-            with those who want to seriously up their game; especially with {highlight('local artists or businesses')}.
+            Yes, my first name is the same as my last. Based in <Highlight>Ottawa, Canada</Highlight>, 
+            I'm an up-and-coming freelance <Highlight>full stack developer</Highlight> who is ready to begin working 
+            with those who want to seriously up their game; especially with <Highlight>local artists or businesses</Highlight>.
           </div>
           <div className={styles.bioSection}>
-            My goal is {highlight('success')} and my passion is empowering those around me. Although 
-            I am also an extremely productive individual, I thrive in {highlight('collaborative environments')}.{' '}
-            <span style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>Tell me about yourself</span>
+            My goal is <Highlight>success</Highlight> and my passion is empowering those around me. Although 
+            I am also an extremely productive individual, I thrive in <Highlight>collaborative environments</Highlight>.{' '}
+            <Underline.Hover>
+              <Link smooth to='/#contact' style={{color: 'var(--black)'}}>Tell me about yourself</Link>
+            </Underline.Hover>
+            {/* <span style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>Tell me about yourself</span> */}
             , and perhaps we can create something amazing together!
           </div>
         </div>
-      </div>
+      </animated.div>
       <animated.div id={styles.aboutBottom} style={contentTrail[3]}>
         <div id={styles.logoPair}>
           <RavensLogo className={styles.logo}/>
@@ -175,9 +196,9 @@ const Skills = () => {
   return (
     <Pane inViewRef={ref} style={{minHeight: 'unset', maxHeight: 'unset', height: 'unset'}}>
       <div id={styles.skills}>
-        <Stripe className={styles.stripeFE} stripeRef={stripeRefFE} inView={inView}/>
-        <Stripe className={styles.stripeBE} stripeRef={stripeRefBE} inView={inView}/>
-        <Stripe className={styles.stripeMD} stripeRef={stripeRefMD} inView={inView}/>
+        <Stripe className={styles.stripeFE} stripeRef={stripeRefFE} isActive={inView} width={window.screen.width}/>
+        <Stripe className={styles.stripeBE} stripeRef={stripeRefBE} isActive={inView} width={window.screen.width}/>
+        <Stripe className={styles.stripeMD} stripeRef={stripeRefMD} isActive={inView} width={window.screen.width}/>
         <animated.div className={styles.skillBox} style={contentTrail[0]}>
           <JavascriptLogo className={styles.logo}/>
           <h4>Front End<br/>Development</h4>
@@ -222,7 +243,9 @@ const Contact = () => {
         <div className={styles.contactSection}>
           <h5>Already have an idea in mind? Let’s not wait.</h5>
           <animated.h2 style={fadeIn}>
-            <a className={styles.link} href="mailto:wal@walcreates.ca" target="_top">wal@walcreates.ca</a>
+            <Underline.Hover color='var(--white)'>
+              <a className={styles.link} href="mailto:wal@walcreates.ca" target="_top">wal@walcreates.ca</a>
+            </Underline.Hover>
           </animated.h2>
         </div>
         <div className={styles.contactSection}>
@@ -249,6 +272,7 @@ const Home = () => (
     <Helmet>
       <title>Wal Wal</title>
     </Helmet>
+    {/* <Stripe className={styles.landingStripe} isActive={true} width={100} style={{backgroundColor: 'blue'}}/> */}
     <Landing/>
     <About/>
     <Skills/>
