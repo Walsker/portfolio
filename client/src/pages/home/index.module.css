@@ -84,13 +84,6 @@
   background-color: var(--primaryColor);
 }
 
-.landingButton {
-  font-size: 28px;
-  /* margin: 0 20px; */
-  cursor: pointer;
-  color: var(--primaryColor);
-}
-
 @media only screen and (min-width: 700px) {
   #keepMovingForward {
     top: 210px;
@@ -102,16 +95,6 @@
 
   .landingStripe {
     height: 140px;
-  }
-
-  .landingButton {
-    text-decoration: none;
-    color: inherit
-  }
-
-  .landingButton:hover, .landingButton:focus {
-    /* color: var(--primaryColor); */
-    transition: 0.1s ease-in;
   }
 }
 

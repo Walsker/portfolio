@@ -80,11 +80,6 @@ const Landing = () => {
             <br/>success
           </div>
         </animated.div>
-        <animated.div id={styles.shortcuts} style={contentTrail[3]}>
-          <Underline.Hover>
-            <Link smooth to='/#contact' className={styles.landingButton}>contact</Link>
-          </Underline.Hover>
-        </animated.div>
       </div>
     </Pane>
   );

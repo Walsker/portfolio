@@ -22,7 +22,7 @@ const ProjectButton = ({label, link, color}) => {
   );
 };
 
-const Projects = () => {
+const Portfolio = () => {
   return (
     <Pane>
       <Helmet>
@@ -39,4 +39,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Portfolio;

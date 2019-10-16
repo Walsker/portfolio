@@ -49,7 +49,7 @@ const Menu = ({close, style}) => {
       <div id={styles.menuContent}>
         <div id={styles.pageButtons}>
           <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/' label='Home'/>
-          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/projects' label='Projects'/>
+          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/portfolio' label='Portfolio'/>
           <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/wal-resume.pdf' label='Resume' external/>
         </div>
         <div id={styles.socialIcons}>
