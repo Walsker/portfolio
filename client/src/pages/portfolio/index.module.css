@@ -3,6 +3,7 @@
   --scPrimary: #00C9E4;
   --scAccent: #D804A9;
   --gaPrimary: #6A00F0;
+  padding-bottom: 50px;
 }
 
 .projectStripe {
@@ -21,5 +22,4 @@
     color: #EEEEEE;
     cursor: pointer;
   }
-  
 }

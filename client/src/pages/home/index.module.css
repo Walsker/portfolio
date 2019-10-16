@@ -85,10 +85,6 @@
 }
 
 @media only screen and (min-width: 700px) {
-  #scrollIndicator {
-    top: 700px;
-  }
-
   #keepMovingForward {
     top: 210px;
   }

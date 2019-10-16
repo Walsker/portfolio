@@ -166,7 +166,7 @@ const About = () => {
           <RavensLogo className={styles.logo}/>
           <KandyLogo className={styles.logo}/>
         </div>
-        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy project.</p>
+        <p>Currently studying Computer Science with a minor in Music Theory at Carleton University, and working an internship at Ribbon Communications on the Kandy Platform.</p>
       </animated.div>
     </Pane>
   );
