@@ -11,7 +11,7 @@ import {faChevronDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
 import {Carousel, Pane, Stripe, Underline} from 'components';
 import {useFadeIn, useInterval} from 'hooks';
-import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo, WalLogo} from 'assets';
+import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from 'assets';
 import styles from './index.module.css';
 
 const Landing = () => {
@@ -244,7 +244,6 @@ const Contact = () => {
           </animated.h2>
         </div>
         <div className={styles.contactSection}>
-          <WalLogo className={`${styles.contactSubsection} ${styles.logo} ${styles.myLogo} unselectable`}/>
           <div className={styles.contactSubsection}>
             <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
             <Icon icon={faGithub} link='https://github.com/Walsker'/>
