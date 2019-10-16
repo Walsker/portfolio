@@ -7,9 +7,9 @@ import Projects from 'pages/projects';
 import NotFound from 'pages/notFound';
 import './index.css';
 
-const withNavBar = (Component, props, flipColor) => (
+const withNavBar = (Component, props) => (
   <>
-    <Navbar flipColor={flipColor}/>
+    <Navbar/>
     <Component {...props}/>
   </>
 );
@@ -19,7 +19,7 @@ const App = () => (
     <Switch>
       <Route exact path='/' render={props => withNavBar(Home, props)}/>
       <Route path='/home' render={() => <Redirect to='/'/>}/>
-      <Route path='/projects' render={props => withNavBar(Projects, props, true)}/>
+      <Route path='/projects' render={props => withNavBar(Projects, props)}/>
       <Route render={props => withNavBar(NotFound, props)}/>
     </Switch>
   </BrowserRouter>

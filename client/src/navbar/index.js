@@ -76,16 +76,16 @@ const Navbar = (props) => {
       W<span id={styles.subLogo}>AL</span>
     </div>
   ) : (
-    <a id={styles.logo} href='/'>
+    <Link id={styles.logo} to='/'>
       W<span id={styles.subLogo}>AL</span>
-    </a>
+    </Link>
   );
 
   return (
     <div id={styles.container}>
       {logo}
       <div 
-        className={`${styles.menuButton} ${props.flipColor ? styles.blackButton : ''}`}
+        className={styles.menuButton}
         onClick={() => {
           toggle(true);
           disableBodyScroll();

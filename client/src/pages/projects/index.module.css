@@ -1,86 +1,24 @@
 #container {
-  color: var(--black);
-  background-color: var(--white);
+  --SCPrimary: #00C9E4;
+  --SCAccent: #D804A9;
+  --GAPrimary: #5921D8;
 }
 
-.project {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin: 100px 0 50px 0;
-}
-
-.title {
-  display: inline-block;
-  margin: 25px 0;
-}
-
-.demo {
-  position: relative;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  height: 90%;
-  background-color: var(--black);
-  overflow: hidden;
-}
-
-.demoWrapper{
-  position: absolute;
-  text-decoration: none;
-}
-
-.portfolioDemo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  color: var(--white);
+.projectStripe {
+  height: 148px;
   background-color: var(--primaryColor);
-  font-family: 'Roboto Slab', serif;
-  font-size: 75px;
-  text-decoration: none;
-  transition: transform 0.5s ease;
-}
-
-.gaDemo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 100px;
-  width: 70vw;
-  height: 100vh;
-  background-color: var(--gaColor);
-  color: var(--white);
-  text-align: center;
-  filter: grayscale(100%)
-}
-
-#gaLogo {
-  width: 200px;
-  margin: 100px 0;
 }
 
 @media only screen and (min-width: 700px) {
-  .project {
-    margin: 80px 0 10px 0;
+  #container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20vh;
   }
   
-  .portfolioDemo:hover {
-    transform: scale(1.15);
+  .project {
+    color: #EEEEEE;
     cursor: pointer;
   }
   
-  .gaDemo {
-    padding: 0 0;
-    width: 100vw;
-  }
-
-  #gaLogo {
-    width: 300px;
-    margin: 50px 0;
-  }
 }

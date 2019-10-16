@@ -146,7 +146,7 @@ const About = () => {
 
   return (
     <Pane inViewRef={ref}>
-      <Stripe className={styles.aboutStripe} stripeRef={stripeRef} isActive={inView} width={window.screen.width}/>
+      <Stripe className={styles.aboutStripe} stripeRef={stripeRef} isActive={inView}/>
       <animated.div id={styles.aboutTop} style={contentTrail[0]}>
         <Adjective/>
         <div id={styles.aboutBio}>
@@ -268,16 +268,15 @@ const Contact = () => {
 };
 
 const Home = () => (
-  <>
+  <div id={styles.home}>
     <Helmet>
       <title>Wal Wal</title>
     </Helmet>
-    {/* <Stripe className={styles.landingStripe} isActive={true} width={100} style={{backgroundColor: 'blue'}}/> */}
     <Landing/>
     <About/>
     <Skills/>
     <Contact/>
-  </>
+  </div>
 );
 
 export default Home;
