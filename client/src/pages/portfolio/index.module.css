@@ -1,7 +1,8 @@
 #container {
-  --SCPrimary: #00C9E4;
-  --SCAccent: #D804A9;
-  --GAPrimary: #5921D8;
+  --cuPrimary: #9756D8;
+  --scPrimary: #00C9E4;
+  --scAccent: #D804A9;
+  --gaPrimary: #6A00F0;
 }
 
 .projectStripe {
