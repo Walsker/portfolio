@@ -8,7 +8,7 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
-import {Underline} from 'components';
+import {Logo, Underline} from 'components';
 import styles from './index.module.css';
 
 const Icon = ({icon, link}) => (
@@ -69,19 +69,9 @@ const Navbar = (props) => {
     from: {height: '0%'}
   });
 
-  const logo = window.location.pathname === '/' ? (
-    <div id={styles.logo} onClick={() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
-      W<span id={styles.subLogo}>AL</span>
-    </div>
-  ) : (
-    <Link id={styles.logo} to='/'>
-      W<span id={styles.subLogo}>AL</span>
-    </Link>
-  );
-
   return (
     <div id={styles.container}>
-      {logo}
+      <Logo color={props.logoColor}/>
       <div 
         className={styles.menuButton}
         onClick={() => {

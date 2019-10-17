@@ -6,7 +6,7 @@ import {animated, useTrail} from 'react-spring';
 import {Pane, Stripe} from 'components';
 import styles from './index.module.css';
 
-import PortfolioProject from './portfolio';
+import Portfolio from './portfolio';
 import CuHacking from './cuHacking';
 
 const ProjectButton = ({style, label, link, color}) => {
@@ -26,7 +26,7 @@ const ProjectButton = ({style, label, link, color}) => {
       to={{
         pathname: `/portfolio${link}`,
         state: {
-          freeze: true
+          animate: true
         }
       }}
       className={styles.projectLink}
@@ -40,7 +40,7 @@ const ProjectButton = ({style, label, link, color}) => {
   );
 };
 
-const Portfolio = () => {
+const PortfolioPage = () => {
   const fadeOut = useTrail(4, {
     to: {color: '#FAFAFA'},
     from: {color: '#F0F0F0'},
@@ -48,8 +48,10 @@ const Portfolio = () => {
   });
 
   const routes = [
-    {subPath: '/portfolio', Component: PortfolioProject, color: 'var(--primaryColor)'},
-    {subPath: '/cuhacking', Component: CuHacking, color: 'black'}
+    {path: '/portfolio', name: 'Portfolio', color: 'var(--primaryColor)', Component: Portfolio},
+    {path: '/cuhacking', name: 'cuHacking', color: 'black', Component: CuHacking},
+    {path: '/savingcindi', name: 'Saving Cindi', color: 'var(--scPrimary)', Component: Portfolio},
+    {path: '/gradeaid', name: 'Grade Aid', color: 'var(--gaPrimary)', Component: CuHacking},
   ];
 
   return (
@@ -60,23 +62,20 @@ const Portfolio = () => {
         <style>{'body {background: var(--white); color: var(--black)'}</style>
       </Helmet>
       <div id={styles.container}>
-        <ProjectButton style={fadeOut[0]} label='Portfolio' link='/portfolio' color='var(--primaryColor)'/>
-        <ProjectButton style={fadeOut[1]} label='cuHacking' link='/cuhacking' color='#000000'/>
-        <ProjectButton style={fadeOut[2]} label='Saving Cindi' link='' color='var(--scPrimary)'/>
-        <ProjectButton style={fadeOut[3]} label='Grade Aid' link='' color='var(--gaPrimary)'/>
+        {routes.map(({name, path, color}, i) => <ProjectButton key={i} style={fadeOut[i]} label={name} link={path} color={color}/>)}
       </div>
-      {routes.map(({subPath, Component, color}) => (
-        <Route key={subPath} exact path={`/portfolio${subPath}`}>
-          {({match, history}) => (
+      {routes.map(({path, color, Component}) => (
+        <Route key={path} exact path={`/portfolio${path}`}>
+          {({match, location}) => (
             <Transition
               in={match != null}
               timeout={{
-                enter: 0,
-                exit: 1000
+                enter: 500,
+                exit: 500
               }}
               unmountOnExit
             >
-              {state => <Component animate={history.action === 'PUSH'} transitionState={state} color={color}/>}
+              {state => <Component color={color} animate={location.state ? location.state.animate : false} transitionState={state}/>}
             </Transition>
           )}
         </Route>
@@ -85,4 +84,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default PortfolioPage;

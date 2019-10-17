@@ -3,7 +3,7 @@ import {animated, useSpring} from 'react-spring';
 import {Link} from 'react-router-dom';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 
-import styles from './portfolio.module.css';
+import styles from './project.module.css';
 
 const CuHacking = ({transitionState, color}) => {
   useEffect(() => {

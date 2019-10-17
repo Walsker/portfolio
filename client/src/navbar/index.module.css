@@ -8,37 +8,6 @@
   justify-content: space-between;
 }
 
-#logo {
-  margin: 5px 0;
-  background-color: var(--primaryColor);
-  font-family: 'Roboto Slab', serif;
-  font-weight: bold;
-  font-size: 40px;
-  padding: 0 8px;
-  clip-path: polygon(0 0, 55% 0, 55% 100%, 0% 100%);
-  color: var(--white);
-  transition: clip-path 0.1s ease-in;
-
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer */
-  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-  -webkit-user-select: none; /* Chrome, Safari, and Opera */
-  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-}
-
-#subLogo, #smallText {
-  font-size: 35px;
-}
-
-#subLogo {
-  opacity: 0;
-  transition: 0.075s ease-in;
-}
-
-#logo:hover {
-  cursor: pointer;
-}
-
 .menuButton {
   margin: 15px 0;
   cursor: pointer;
@@ -50,14 +19,6 @@
 }
 
 @media only screen and (min-width: 700px) {
-  #logo:hover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-  
-  #logo:hover #subLogo{
-    opacity: 1;
-  }
-
   .menuButton:hover {
     color: var(--primaryColor);
   }

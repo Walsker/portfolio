@@ -7,9 +7,9 @@ import Portfolio from 'pages/portfolio';
 import NotFound from 'pages/notFound';
 import './index.css';
 
-const withNavBar = (Component, props) => (
+const withNavBar = (props, Component, color) => (
   <>
-    <Navbar/>
+    <Navbar logoColor={color}/>
     <Component {...props}/>
   </>
 );
@@ -17,11 +17,11 @@ const withNavBar = (Component, props) => (
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' render={props => withNavBar(Home, props)}/>
+      <Route exact path='/' render={props => withNavBar(props, Home)}/>
       <Route path='/home' render={() => <Redirect to='/'/>}/>
       <Route path='/resume' render={() => <Redirect to='/wal_resume.pdf'/>}/>
       <Route path='/projects' render={() => <Redirect to='/portfolio'/>}/>
-      <Route path='/portfolio' render={props => withNavBar(Portfolio, props)}/>
+      <Route path='/portfolio' render={props => withNavBar(props, Portfolio, 'var(--white)')}/>
       <Route render={props => withNavBar(NotFound, props)}/>
     </Switch>
   </BrowserRouter>

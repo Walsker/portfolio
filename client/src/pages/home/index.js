@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {faChevronDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
+import Navbar from 'navbar';
 import {Carousel, Pane, Stripe, Underline} from 'components';
 import {useFadeIn, useInterval} from 'hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from 'assets';
@@ -53,7 +54,7 @@ const Landing = () => {
       {scrollIndicator}
       <div id={styles.landingLeft} className='unselectable'>
         <animated.div style={contentTrail[0]}>
-          <h3>I create</h3>
+          <h3 style={{marginBottom: 0}}>I create</h3>
         </animated.div>
         <animated.div style={contentTrail[1]}>
           <Carousel index={carouselIndex}>
