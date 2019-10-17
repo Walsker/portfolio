@@ -6,8 +6,18 @@
   padding-bottom: 50px;
 }
 
+.project {
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  left: 0;
+}
+
 .projectStripe {
-  height: 148px;
+  height: 145.5px;
   background-color: var(--primaryColor);
 }
 
@@ -18,7 +28,7 @@
     margin-top: 20vh;
   }
   
-  .project {
+  .projectLink {
     color: #EEEEEE;
     cursor: pointer;
   }

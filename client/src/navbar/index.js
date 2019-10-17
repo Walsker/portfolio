@@ -35,32 +35,30 @@ const PageButton = ({close, path, label, external}) => {
   }
 };
 
-const Menu = ({close, style}) => {
-  return (
-    <animated.div id={styles.menuContainer} style={style}>
-      <div id={styles.menuBar}>
-        <div id={styles.menuLogo}>
-          W<span id={styles.smallText}>AL</span>
-        </div>
-        <div id={styles.exitButton} onClick={close}>
-          <FontAwesomeIcon icon={faTimes} size='2x'/>
-        </div>
+const Menu = ({close, style}) => (
+  <animated.div id={styles.menuContainer} style={style}>
+    <div id={styles.menuBar}>
+      <div id={styles.menuLogo}>
+        W<span id={styles.smallText}>AL</span>
       </div>
-      <div id={styles.menuContent}>
-        <div id={styles.pageButtons}>
-          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/' label='Home'/>
-          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/portfolio' label='Portfolio'/>
-          <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/wal-resume.pdf' label='Resume' external/>
-        </div>
-        <div id={styles.socialIcons}>
-          <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
-          <Icon icon={faGithub} link='https://github.com/Walsker'/>
-          <Icon icon={faEnvelope} link='mailto:wal@walcreates.ca'/>
-        </div>
+      <div id={styles.exitButton} onClick={close}>
+        <FontAwesomeIcon icon={faTimes} size='2x'/>
       </div>
-    </animated.div>
-  );
-};
+    </div>
+    <div id={styles.menuContent}>
+      <div id={styles.pageButtons}>
+        <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/' label='Home'/>
+        <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/portfolio' label='Portfolio'/>
+        <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/wal-resume.pdf' label='Resume' external/>
+      </div>
+      <div id={styles.socialIcons}>
+        <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
+        <Icon icon={faGithub} link='https://github.com/Walsker'/>
+        <Icon icon={faEnvelope} link='mailto:wal@walcreates.ca'/>
+      </div>
+    </div>
+  </animated.div>
+);
 
 const Navbar = (props) => {
   const [isOpen, toggle] = useState(false);

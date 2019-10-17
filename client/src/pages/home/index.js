@@ -106,7 +106,6 @@ const About = () => {
       'hard-working',
       'a Leo',
       'friendly',
-      'a deep sleeper',
       'motivated'
     ];
     
@@ -131,9 +130,7 @@ const About = () => {
     highlightRefs.push(underlineRef);
 
     return (
-      <Underline.Animated underlineRef={underlineRef} inView={inView}>
-        <span style={{color: 'var(--black)', whiteSpace: 'nowrap'}}>{children}</span>
-      </Underline.Animated>
+      <span style={{color: 'var(--primaryColor)', whiteSpace: 'nowrap', fontWeight: '900'}}>{children}</span>
     );
   };
 
