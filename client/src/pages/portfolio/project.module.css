@@ -22,14 +22,14 @@
 
 .feature {
   display: flex;
-  padding-left: 5vw;
+  flex: 1;
   justify-content: center;
   align-items: center;
 }
 
 #portfolioFeature {
-  font-size: 300px;
-  color: var(--white);
+  width: 350px;
+  height: 350px;
 }
 
 .landing {
