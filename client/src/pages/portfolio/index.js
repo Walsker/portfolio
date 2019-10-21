@@ -4,12 +4,14 @@ import {Link, Route, useLocation} from 'react-router-dom';
 import {Transition} from 'react-transition-group';
 import {animated, useTrail} from 'react-spring';
 import {Pane, Stripe} from 'components';
+import {useMobile} from 'hooks';
 import styles from './index.module.css';
 
 import Portfolio from './portfolio';
 import CuHacking from './cuHacking';
 
 const ProjectButton = ({style, label, link, color}) => {
+  const isMobile = useMobile();
   const {pathname} = useLocation();
   const [isHovering, toggleHover] = useState(false);
   const [isFrozen, freeze] = useState(false);
@@ -21,6 +23,8 @@ const ProjectButton = ({style, label, link, color}) => {
     }
   }, [pathname, isFrozen]);
 
+  if (isMobile) style.color = color;
+  
   return (
     <Link
       to={{
@@ -34,7 +38,7 @@ const ProjectButton = ({style, label, link, color}) => {
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
     >
-      <Stripe className={styles.projectStripe} isActive={isHovering || (pathname === `/portfolio${link}`) || isFrozen} style={{backgroundColor: color}}/>
+      <Stripe className={styles.projectStripe} isActive={(isHovering || (pathname === `/portfolio${link}`) || isFrozen) && !isMobile} style={{backgroundColor: color}}/>
       <animated.h1 style={style}>{label}</animated.h1>
     </Link>
   );
