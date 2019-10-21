@@ -204,7 +204,7 @@ const Skills = () => {
         <animated.div className={styles.skillBox} style={contentTrail[2]}>
           <ReactLogo className={styles.logo}/>
           <h4>Mobile<br/>Development</h4>
-          Using React Native I can create mobile apps for both Android and iOS with quickly and effectively.
+          Using React Native I can create mobile apps for both Android and iOS quickly and effectively.
         </animated.div>
       </div>
     </Pane>

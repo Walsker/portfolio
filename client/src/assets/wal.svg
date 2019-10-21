@@ -8,6 +8,7 @@
 		stroke:#FAFAFA;
 		stroke-width:15;
 		stroke-miterlimit:10;
+		stroke-linecap:round;
 
 		stroke-dasharray:5000;
 		stroke-dashoffset:5000;
