@@ -21,7 +21,7 @@ const Portfolio = props => {
         <style>{'body {color: var(--black)'}</style>
       </Helmet>
       <Pane>
-        <div className={styles.landing}>
+        <div className={styles.container}>
           <div className={styles.feature}><WalLogo id={styles.portfolioFeature}/></div>
           <div className={styles.description}>
             <animated.h1 style={fadeIn[0]}>Portfolio</animated.h1>
