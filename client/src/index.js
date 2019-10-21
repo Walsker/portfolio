@@ -22,7 +22,7 @@ const App = () => (
       <Route path='/resume' render={() => <Redirect to='/wal_resume.pdf'/>}/>
       <Route path='/projects' render={() => <Redirect to='/portfolio'/>}/>
       <Route path='/portfolio' render={props => withNavBar(props, Portfolio, 'var(--white)')}/>
-      <Route render={props => withNavBar(NotFound, props)}/>
+      <Route render={props => withNavBar(props, NotFound)}/>
     </Switch>
   </BrowserRouter>
 );

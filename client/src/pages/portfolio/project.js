@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import {animated, useSpring} from 'react-spring';
 import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 

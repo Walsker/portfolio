@@ -9,7 +9,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {faChevronDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {useChain, useSpring, animated} from 'react-spring';
-import Navbar from 'navbar';
 import {Carousel, Pane, Stripe, Underline} from 'components';
 import {useFadeIn, useInterval} from 'hooks';
 import {JavascriptLogo, KandyLogo, NodeLogo, RavensLogo, ReactLogo} from 'assets';
