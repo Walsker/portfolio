@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-const buildPath = process.env.DEV ? './client/build' : './client' 
+const buildPath = process.env.DEV ? './client/build' : './client'
 app.use(express.static(path.join(__dirname, buildPath)));
-app.use(express.static('../resources'))
+app.use(express.static('./resources'))
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, `${buildPath}/index.html`))
