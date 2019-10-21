@@ -10,6 +10,7 @@ import styles from './index.module.css';
 import Portfolio from './portfolio';
 import CuHacking from './cuHacking';
 import SavingCindi from './savingCindi';
+import GradeAid from './gradeAid';
 
 const ProjectButton = ({style, label, link, color}) => {
   const isMobile = useMobile();
@@ -56,7 +57,7 @@ const PortfolioPage = () => {
     {path: '/portfolio', name: 'Portfolio', color: 'var(--primaryColor)', Component: Portfolio},
     {path: '/cuhacking', name: 'cuHacking', color: 'black', Component: CuHacking},
     {path: '/savingcindi', name: 'Saving Cindi', color: 'var(--scPrimary)', Component: SavingCindi},
-    {path: '/gradeaid', name: 'Grade Aid', color: 'var(--gaPrimary)', Component: CuHacking},
+    {path: '/gradeaid', name: 'Grade Aid', color: 'var(--gaPrimary)', Component: GradeAid},
   ];
 
   return (

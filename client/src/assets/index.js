@@ -1,4 +1,5 @@
 import {ReactComponent as CuHackingLogo} from './cuHacking-animated.svg';
+import {ReactComponent as InDevelopment} from './inDevelopment.svg';
 import {ReactComponent as JavascriptLogo} from './javascript.svg';
 import {ReactComponent as KandyLogo} from './kandy.svg';
 import {ReactComponent as NodeLogo} from './nodejs.svg';
@@ -10,6 +11,7 @@ import {ReactComponent as WalLogo} from './wal.svg';
 
 export {
   CuHackingLogo,
+  InDevelopment,
   JavascriptLogo,
   KandyLogo,
   NodeLogo,
