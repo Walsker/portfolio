@@ -2,7 +2,11 @@
   --white: #FAFAFA;
   --black: #111111;
   --primaryColor: #E63042;
-  --gaColor: #5921D8;
+  --cuPrimary: #9756D8;
+  --cuAccent: #00D0FE;
+  --scPrimary: #00C9E4;
+  --scAccent: #D804A9;
+  --gaPrimary: #6A00F0;
   --pageMaxWidth: 1024px;
   --pageWidth: 90%;
 }
@@ -68,6 +72,22 @@ h5 {
   font-size: 4vw;
   line-height: 1;
   margin-bottom: 0;
+}
+
+a:link {
+  color: unset;
+}
+
+a:visited {
+  color: unset;
+}
+
+a:hover {
+  color: unset;
+}
+
+a:active {
+  color: unset;
 }
 
 #root {
