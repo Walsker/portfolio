@@ -7,19 +7,33 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 
 import {useFadeIn} from 'hooks';
 import {Pane, Underline} from 'components';
-import {CuHackingLogo} from 'assets';
+import {SCLines, SavingCindiLogo} from 'assets';
 import styles from './project.module.css';
 import Project from './project';
 
-const SavingCindi = props => {
-  const fadeIn = useFadeIn(4, null, true, {delay: 500});
+const Logo = () => {
   const logoFadeIn = useSpring({
     from: {opacity: 0},
     to: {opacity: 1},
-    delay: 1500,
-    config: {friction: 150}
+    delay: 5000
   });
-  
+
+  return (
+    <div id={styles.scLogo}>
+      <SCLines id={styles.scSvg} />
+      <animated.img
+        id={styles.scImg}
+        style={logoFadeIn}
+        src={SavingCindiLogo}
+        alt='Saving Cindi logo'
+      />
+    </div>
+  );
+};
+
+const SavingCindi = props => {
+  const fadeIn = useFadeIn(4, null, true, {delay: 500});
+
   return (
     <Project color={props.color} animate={props.animate} transitionState={props.transitionState}>
       <Helmet>
@@ -28,13 +42,13 @@ const SavingCindi = props => {
       </Helmet>
       <Pane>
         <div className={styles.container}>
-          <animated.div className={styles.feature} id={styles.featureID} style={logoFadeIn}><CuHackingLogo/></animated.div>
+          <animated.div className={styles.feature} id={styles.featureID}><Logo/></animated.div>
           <div className={styles.description}>
             <animated.h1 style={fadeIn[0]} className={styles.title}>Saving Cindi</animated.h1>
             <animated.h3 style={fadeIn[1]} className={styles.subtitle}>
               Coming soon!
-              {/* <Underline.Hover color='var(--cuAccent)'>
-                <a href='https://cuhacking.com' target='_blank' rel='noopener noreferrer external'>
+              {/* <Underline.Hover color='var(--scAccent)'>
+                <a href='https://savingcindi.com' target='_blank' rel='noopener noreferrer external'>
                   savingcindi.com
                 </a>
               </Underline.Hover> */}

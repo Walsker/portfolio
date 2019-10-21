@@ -68,6 +68,23 @@
   color: var(--cuPrimary);
 }
 
+#scLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scSvg {
+  width: 25vh;
+  height: 25vh;
+}
+
+#scImg {
+  position: absolute;
+  width: 25vh;
+  height: 25vh;
+}
+
 @media only screen and (min-width: 700px) {
   .feature {
     flex: 1;
@@ -115,7 +132,19 @@
   #scBack:hover {
     color: var(--scAccent);
   }
+
+  #scSvg {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+  }
   
+  #scImg {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+  }
+
   #gaBack:hover {
     color: white;
   }
