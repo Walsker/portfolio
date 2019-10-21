@@ -145,7 +145,7 @@ const About = () => {
           <div className={styles.bioSection}>
             Yes, my first name is the same as my last. Based in <Highlight>Ottawa, Canada</Highlight>, 
             I'm an up-and-coming freelance <Highlight>full stack developer</Highlight> who is ready to begin working 
-            with those who want to seriously up their game; especially with <Highlight>local artists or businesses</Highlight>.
+            with those who want to seriously up their game - especially with <Highlight>local artists or businesses</Highlight>.
           </div>
           <div className={styles.bioSection}>
             My goal is <Highlight>success</Highlight> and my passion is empowering those around me. Although 
