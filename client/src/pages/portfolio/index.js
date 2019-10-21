@@ -63,7 +63,7 @@ const PortfolioPage = () => {
   return (
     <Pane>
       <Helmet>
-        <title>Wal Wal | Portfolio</title>
+        <title>Wal's Portfolio</title>
         <meta name='description' content='Your neighbourhood freelance developer. Take a look at my projects!'/>
         <style>{'body {background: var(--white); color: var(--black)'}</style>
       </Helmet>
