@@ -11,7 +11,7 @@ import {CuHackingLogo} from 'assets';
 import styles from './project.module.css';
 import Project from './project';
 
-const CuHacking = props => {
+const SavingCindi = props => {
   const fadeIn = useFadeIn(4, null, true, {delay: 500});
   const logoFadeIn = useSpring({
     from: {opacity: 0},
@@ -23,30 +23,29 @@ const CuHacking = props => {
   return (
     <Project color={props.color} animate={props.animate} transitionState={props.transitionState}>
       <Helmet>
-        <title>Wal's Portfolio | cuHacking</title>
-        <style>{'body {color: white}'}</style>
+        <title>Wal's Portfolio | Saving Cindi</title>
+        <style>{'body {color: var(--black)}'}</style>
       </Helmet>
       <Pane>
         <div className={styles.container}>
           <animated.div className={styles.feature} id={styles.featureID} style={logoFadeIn}><CuHackingLogo/></animated.div>
           <div className={styles.description}>
-            <animated.h1 style={fadeIn[0]} className={styles.title} id={styles.cuTitle}>cuHacking</animated.h1>
+            <animated.h1 style={fadeIn[0]} className={styles.title}>Saving Cindi</animated.h1>
             <animated.h3 style={fadeIn[1]} className={styles.subtitle}>
-              <Underline.Hover color='var(--cuAccent)'>
+              Coming soon!
+              {/* <Underline.Hover color='var(--cuAccent)'>
                 <a href='https://cuhacking.com' target='_blank' rel='noopener noreferrer external'>
-                  cuhacking.com
+                  savingcindi.com
                 </a>
-              </Underline.Hover>
+              </Underline.Hover> */}
             </animated.h3>
             <animated.p style={fadeIn[2]}>
-              As Director of Development, my role is to develop the software which cuHacking uses. Of course, I'm not alone. I lead a team of six other skilled developers in making what we believe is the most ambitious undertaking for cuHacking yet.
-              <br/><br/>
-              To stand out from other hackathons, I've designed the "cuPlatform" - a collection of online services for attendees, organizers, and sponsors of the hackathon. Its purpose is to digitize parts of the event, such as registration, to make them more efficient.
+              A magnificent band from Ottawa, Canada. Focused on delivering powerful R&B, Soul, and Jazz, they’re a group to be on the lookout for!
             </animated.p>
           </div>
         </div>
         <animated.div style={fadeIn[3]}>
-          <Link to={{pathname: '/portfolio', state: {animate: true}}} className={styles.backButton} id={styles.cuBack}>
+          <Link to={{pathname: '/portfolio', state: {animate: true}}} className={styles.backButton} id={styles.scBack}>
             <FontAwesomeIcon className={styles.backIcon} icon={faChevronLeft} size='lg'/>
             other projects
           </Link>
@@ -56,4 +55,4 @@ const CuHacking = props => {
   );
 };
 
-export default CuHacking;
+export default SavingCindi;
