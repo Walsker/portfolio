@@ -17,12 +17,23 @@ const Icon = ({icon, link}) => (
   </a>
 );
 
-const PageButton = ({close, path, label, external}) => (
-  <Underline.Hover color='var(--white)'>
-    <Link onClick={close} className={styles.pageButton} to={path}>{label}</Link>
-  </Underline.Hover>
-);
-
+const PageButton = ({close, path, label, external}) => {
+  if (external) {
+    return (
+      <Underline.Hover color='var(--white)'>
+        <a href={path} className={styles.pageButton}>
+          {label}
+        </a>
+      </Underline.Hover>
+    );
+  } else {
+    return (
+      <Underline.Hover color='var(--white)'>
+        <Link onClick={close} className={styles.pageButton} to={path}>{label}</Link>
+      </Underline.Hover>
+    );
+  }
+};
 const Menu = ({close, style}) => (
   <animated.div id={styles.menuContainer} style={style}>
     <div id={styles.menuBar}>
@@ -37,7 +48,7 @@ const Menu = ({close, style}) => (
       <div id={styles.pageButtons}>
         <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/' label='Home'/>
         <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/portfolio' label='Portfolio'/>
-        <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/resume' label='Resume'/>
+        <PageButton close={() => {close(); window.scrollTo(0, 0);}} path='/wal_resume.pdf' label='Resume' external/>
       </div>
       <div id={styles.socialIcons}>
         <Icon icon={faLinkedin} link='https://www.linkedin.com/in/wal-wal'/>
