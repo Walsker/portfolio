@@ -39,11 +39,12 @@
   justify-content: space-between;
 }
 
-.name {
+.description {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: right;
+  max-width: 50vw;
 }
 
 .subtitle {
@@ -51,6 +52,28 @@
 }
 
 .backButton {
-  margin: 15px 0;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  font-size: 21px;
   transition: 0.1s ease-in;
+}
+
+.backIcon {
+  margin-right: 10px;
+  font-size: 19px;
+}
+
+@media only screen and (min-width: 700px) {
+  .backButton {
+    width: 200px;
+  }
+
+  .backButton:hover {
+    color: var(--white);
+  }
+
+  .description {
+    max-width: 512px;
+  }
 }

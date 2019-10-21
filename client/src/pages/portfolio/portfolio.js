@@ -23,15 +23,20 @@ const Portfolio = props => {
       <Pane>
         <div className={styles.landing}>
           <div className={styles.feature}><WalLogo id={styles.portfolioFeature}/></div>
-          <div className={styles.name}>
+          <div className={styles.description}>
             <animated.h1 style={fadeIn[0]}>Portfolio</animated.h1>
             <animated.h3 style={fadeIn[1]} className={styles.subtitle}>You're already here!</animated.h3>
-            <animated.p style={fadeIn[2]}>Here is where I display my work.</animated.p>
+            <animated.p style={fadeIn[2]}>
+              This website was created as a central location to allow for peers and professionals to keep up with my latest projects. It focuses on using horizontally animated stripes to convey the quintessence of my motto - keep moving forward.
+            </animated.p>
           </div>
         </div>
-        <Link to={{pathname: '/portfolio', state: {animate: true}}} className={styles.backButton}>
-          <FontAwesomeIcon className={styles.backButton} icon={faChevronLeft} size='lg'/>
-        </Link>
+        <animated.div style={fadeIn[3]}>
+          <Link to={{pathname: '/portfolio', state: {animate: true}}} className={styles.backButton}>
+            <FontAwesomeIcon className={styles.backIcon} icon={faChevronLeft} size='lg'/>
+            other projects
+          </Link>
+        </animated.div>
       </Pane>
     </Project>
   );
