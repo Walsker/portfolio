@@ -150,10 +150,7 @@ const About = () => {
           <div className={styles.bioSection}>
             My goal is <Highlight>success</Highlight> and my passion is empowering those around me. Although 
             I am also an extremely productive individual, I thrive in <Highlight>collaborative environments</Highlight>.{' '}
-            <Underline.Hover>
-              <Link smooth to='/#contact' style={{color: 'var(--black)'}}>Tell me about yourself</Link>
-            </Underline.Hover>
-            {/* <span style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>Tell me about yourself</span> */}
+            <span style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => window.scrollTo({top: document.body.scrollHeight, left: 0, behavior: 'smooth'})}>Tell me about yourself</span>
             , and perhaps we can create something amazing together!
           </div>
         </div>
