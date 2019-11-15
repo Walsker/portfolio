@@ -58,7 +58,7 @@ const Landing = () => {
         <animated.div style={contentTrail[1]}>
           <Carousel index={carouselIndex}>
             <h1>websites</h1>
-            <h1>mobile apps</h1>
+            <h1>web apps</h1>
           </Carousel>
         </animated.div>
       </div>

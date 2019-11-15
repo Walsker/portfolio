@@ -46,12 +46,11 @@ const SavingCindi = props => {
           <div className={styles.description}>
             <animated.h1 style={fadeIn[0]} className={styles.title}>Saving Cindi</animated.h1>
             <animated.h3 style={fadeIn[1]} className={styles.subtitle}>
-              Coming soon!
-              {/* <Underline.Hover color='var(--scAccent)'>
+              <Underline.Hover color='var(--scAccent)'>
                 <a href='https://savingcindi.com' target='_blank' rel='noopener noreferrer external'>
                   savingcindi.com
                 </a>
-              </Underline.Hover> */}
+              </Underline.Hover>
             </animated.h3>
             <animated.p style={fadeIn[2]}>
               A magnificent band from Ottawa, Canada. Focused on delivering powerful R&B, Soul, and Jazz, they’re a group to be on the lookout for!
